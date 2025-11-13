@@ -1,15 +1,23 @@
 import React from "react";
 import MotionWrapper from "../components/MotionWrapper";
 import Layout from "../components/Layout";
+import {
+  HeroSection,
+  ServicePreview,
+  CTASection,
+  TestimonialCarousel,
+  ChatbotWidget,
+} from "./LandingPage";
 
 function LandingPage() {
   return (
     <Layout>
       <MotionWrapper>
-        <div className="container py-5">
-          <h1>Landing Page</h1>
-          <p>Selamat datang di Geo Mandiri Kreasi.</p>
-        </div>
+        <HeroSection />
+        <ServicePreview />
+        <CTASection />
+        <TestimonialCarousel />
+        <ChatbotWidget />
       </MotionWrapper>
     </Layout>
   );
