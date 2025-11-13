@@ -1,12 +1,18 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
+* {
+  transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* 🎨 Root Colors */
 :root {
   --primary: #00bfa6;
   --gray: #f1f1f1;
   --dark: #2b2b2b;
 }
 
+/* 🌐 Base Style */
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--gray);
@@ -20,12 +26,496 @@ a {
   color: inherit;
 }
 
+/* Pastikan navbar selalu di depan semua elemen lain */
+/* 🧩 Pastikan Navbar selalu bisa di-klik */
+/* 🧩 Navbar z-index fix biar di atas HeroSection & video */
+.navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999 !important;
+}
+
+/* 🧩 Navbar collapse dropdown juga harus di atas video */
+.navbar-collapse {
+  z-index: 9999 !important;
+  position: relative;
+}
+
+/* Default (light mode) */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%2833,37,41,0.9%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Dark mode */
+.dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,0.9%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* 🧊 Navbar Glass Effect */
+.navbar-glass {
+  background: rgba(255, 255, 255, 0.25); /* lebih transparan */
+  backdrop-filter: blur(12px); /* efek kaca */
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.navbar-glass.dark {
+  background: rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-shrink {
+  padding-top: 0.4rem !important;
+  padding-bottom: 0.4rem !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔗 Navbar Links */
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.nav-link.active {
+  color: var(--primary) !important;
+  text-shadow: 0 0 6px rgba(0, 191, 166, 0.7);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* 🌙 Dark Mode Toggle */
+.dark-toggle {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--primary);
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+
+.dark-toggle:hover {
+  transform: rotate(20deg);
+}
+
+/* 🌑 Body Background for Dark Mode */
+body.dark-mode {
+  background-color: var(--dark);
+  color: var(--gray);
+}
+
+/* 💼 Service Card Styling */
+.service-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  padding: 2rem 1.5rem;
+  height: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 191, 166, 0.2);
+}
+
+/* 🌟 Icon Glowing Effect */
+.service-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(0, 191, 166, 0.6);
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1);
+  text-shadow: 0 0 15px rgba(0, 191, 166, 0.9);
+}
+
+/* 📋 Title & Description */
+.service-title {
+  font-weight: 600;
+  color: var(--dark);
+  margin-top: 1rem;
+}
+
+.service-desc {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* 🧱 Global Section Spacing */
+section {
+  scroll-margin-top: 80px;
+}
+
+section + section {
+  margin-top: 30px;
+}
+
+.cta-section {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.testi-section {
+  margin-top: 25px;
+}
+
+/* 🌿 Service Section Specific */
+.service-section {
+  background-color: var(--gray);
+  padding: 80px 0;
+  transition: background-color 0.4s ease;
+}
+
+/* 🌙 Service Section (Dark Mode) */
+body.dark-mode .service-section {
+  background-color: #2b2b2b;
+}
+
+/* 🌙 Service Card Dark Mode */
+body.dark-mode .service-card {
+  background: rgba(43, 43, 43, 0.85);
+  color: var(--gray);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 🌙 Service Title & Desc in Dark Mode */
+body.dark-mode .service-title {
+  color: var(--gray);
+}
+
+body.dark-mode .service-desc {
+  color: #ccc;
+}
+
+/* 🌙 Icon tetap glow */
+body.dark-mode .service-icon {
+  color: var(--primary);
+  text-shadow: 0 0 12px rgba(0, 191, 166, 0.8);
+}
+
+/* 🎞️ CTA Gradient Background Animation */
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.cta-animated-bg {
+  background: linear-gradient(270deg, #00bfa5, #00acc1, #26c6da, #80deea);
+  background-size: 400% 400%;
+  animation: gradient-move 3s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+}
+
+.cta-button {
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 191, 165, 0.5);
+}
+
+/* 🌍 Section Titles */
+.service-title-section {
+  color: var(--dark);
+  transition: color 0.4s ease;
+}
+
+.service-desc-section {
+  color: #555;
+  transition: color 0.4s ease;
+}
+
+/* 🌙 Dark mode override */
+body.dark-mode .service-title-section {
+  color: var(--gray);
+}
+
+body.dark-mode .service-desc-section {
+  color: #ccc;
+}
+
+/* 🎯 Carousel Styling */
+.carousel-indicators {
+  margin-top: 25px !important;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  transition: filter 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .carousel-control-prev-icon,
+body.dark-mode .carousel-control-next-icon {
+  color: white;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 12px rgba(0, 191, 166, 0.6);
+}
+
+.carousel-indicators {
+  bottom: -50px !important;
+}
+
+/* 📱 Responsive Typography */
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2rem;
+  }
+  .lead {
+    font-size: 1rem;
+  }
+}
+
+/* 🟩 Tosca Button Style */
 .btn-toska {
-  background-color: #20c997;
+  background-color: var(--primary);
   color: white;
   border: none;
   transition: all 0.3s;
 }
+
 .btn-toska:hover {
   background-color: #17a589;
+}
+
+/* 🌿 Footer Styling — 4 Columns + Map */
+.footer-section {
+  background: linear-gradient(135deg, #e6f7f5, #d9f0ee, #c1e6e2);
+  padding: 70px 0 40px;
+  /* border-top: 1px solid rgba(0, 0, 0, 0.05); */
+  margin-top: 50px;
+}
+
+.footer-section .container {
+  max-width: 1400px;
+}
+
+.footer-section h5,
+.footer-section h6 {
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-section p,
+.footer-section li,
+.footer-section a {
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.footer-section ul {
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.footer-section li + li {
+  margin-top: 0.6rem;
+}
+
+.footer-section a:hover {
+  color: var(--primary);
+}
+
+/* Social Icons */
+.footer-section .social-icons a {
+  color: #444;
+  transition: all 0.3s ease;
+}
+
+.footer-section .social-icons a:hover {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.footer-section hr {
+  margin: 2rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 25px;
+}
+
+/* 🌓 Dark Mode Footer */
+body.dark-mode .footer-section {
+  background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .footer-section h5,
+body.dark-mode .footer-section h6 {
+  color: #fff;
+}
+
+body.dark-mode .footer-section p,
+body.dark-mode .footer-section li,
+body.dark-mode .footer-section a {
+  color: #ccc;
+}
+
+body.dark-mode .footer-section a:hover {
+  color: var(--primary);
+}
+
+body.dark-mode .footer-bottom {
+  color: #aaa;
+}
+
+/* 🗺️ Footer Map */
+.footer-section .ratio iframe {
+  border-radius: 10px;
+  width: 100%;
+  height: 200px;
+}
+
+/* 📱 Responsive Footer */
+@media (max-width: 991px) {
+  .footer-section {
+    padding: 60px 20px;
+  }
+  .footer-section .ratio {
+    margin-top: 1.5rem;
+  }
+}
+
+/* 💬 Chatbot & User Avatar */
+.chatbot-avatar,
+.user-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chatbot-avatar {
+  background: var(--primary);
+  box-shadow: 0 0 10px rgba(0, 191, 166, 0.4);
+}
+
+.user-avatar {
+  background: #0d6efd; /* Bootstrap primary */
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
+}
+
+/* ⌨️ Typing Indicator */
+.typing-indicator {
+  background: #fff;
+  border-radius: 12px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  width: 50px;
+  justify-content: space-around;
+}
+
+.typing-indicator span {
+  width: 6px;
+  height: 6px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  animation: typingBlink 1.2s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingBlink {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  animation: typingBlink 1.3s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) {
+  animation-delay: 0s;
+}
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingBlink {
+  0%,
+  80%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
 }
