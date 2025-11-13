@@ -1,13 +1,11 @@
-// Dummy service data
-
-import { Leaf, Building2, Factory } from "lucide-react";
+// Dummy service data (PURE JS, no JSX allowed)
 
 export const services = [
   {
     id: 1,
     title: "Penyusunan UKL-UPL",
     slug: "penyusunan-ukl-upl",
-    icon: <Leaf size={40} />,
+    icon: "Leaf", // stored as string
     shortDesc:
       "Dokumen pengelolaan & pemantauan lingkungan untuk usaha skala menengah.",
     basePrice: 2500000,
@@ -27,7 +25,7 @@ export const services = [
     id: 2,
     title: "Penyusunan SPPL",
     slug: "penyusunan-sppl",
-    icon: <Building2 size={40} />,
+    icon: "Building2", // stored as string
     shortDesc: "Surat Pernyataan Kesanggupan Pengelolaan Lingkungan.",
     basePrice: 1500000,
     faktor: 10000,
@@ -46,13 +44,13 @@ export const services = [
     id: 3,
     title: "Amdal / Andalalin",
     slug: "amdal-andalalin",
-    icon: <Factory size={40} />,
+    icon: "Factory", // stored as string
     shortDesc: "Analisis dampak kegiatan skala besar.",
     basePrice: 5000000,
     faktor: 20000,
     lokasiFee: {
       jabodetabek: 1000000,
-      luarJabodetabek: 2000000,
+      luarDabodetabek: 2000000,
     },
     details: [
       "Survey teknis mendalam",
