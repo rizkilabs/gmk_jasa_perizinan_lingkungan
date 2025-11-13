@@ -1,6 +1,6 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import MotionWrapper from "../components/MotionWrapper";
+import MotionWrapper from "../../components/MotionWrapper";
 
 const HeroSection = () => {
   return (
