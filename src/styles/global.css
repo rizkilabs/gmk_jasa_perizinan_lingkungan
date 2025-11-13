@@ -19,3 +19,13 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+.btn-toska {
+  background-color: #20c997;
+  color: white;
+  border: none;
+  transition: all 0.3s;
+}
+.btn-toska:hover {
+  background-color: #17a589;
+}
