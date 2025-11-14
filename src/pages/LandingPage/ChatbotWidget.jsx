@@ -1,3 +1,4 @@
+// src/pages/LandingPage/ChatbotWidget.jsx
 import React, { useState, useRef, useEffect } from "react";
 import { MessageCircle, Send, Bot, User, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,12 +16,39 @@ const ChatbotWidget = () => {
   const [input, setInput] = useState("");
   const chatEndRef = useRef(null);
 
-  // Scroll otomatis ke bawah
+  // Scroll ke bawah otomatis
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Fungsi kirim pesan
+  // External trigger listener
+  useEffect(() => {
+    const handler = (e) => {
+      const { message, autoSend } = e.detail || {};
+      // open widget
+      setOpen(true);
+      setMinimized(false);
+      if (message) {
+        if (autoSend) {
+          // push user message then auto reply
+          const userMsg = { sender: "user", text: message };
+          setMessages((prev) => [...prev, userMsg]);
+          // simulate typing delay
+          setTimeout(() => {
+            const botReply = findBestResponse(message);
+            setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
+          }, 700);
+        } else {
+          // just prefill input and focus (prefill)
+          setInput(message);
+        }
+      }
+    };
+
+    window.addEventListener("openChatbot", handler);
+    return () => window.removeEventListener("openChatbot", handler);
+  }, []);
+
   const handleSend = () => {
     if (!input.trim()) return;
 
@@ -40,12 +68,14 @@ const ChatbotWidget = () => {
     <>
       {/* Floating Chat Button */}
       <button
-        onClick={() => setOpen(!open)}
+        onClick={() => {
+          setOpen((o) => !o);
+          setMinimized(false);
+        }}
         className="btn btn-toska rounded-circle position-fixed bottom-0 end-0 m-4 p-3 shadow-lg d-flex justify-content-center align-items-center"
         style={{
           zIndex: 999,
           transition: "transform 0.2s",
-          transform: open ? "rotate(45deg)" : "rotate(0deg)",
         }}
         aria-label="Toggle chat"
       >
@@ -89,7 +119,7 @@ const ChatbotWidget = () => {
                 <h6 className="fw-bold mb-0">GeoBot 🤖</h6>
               </div>
               <button
-                onClick={() => setMinimized(!minimized)}
+                onClick={() => setMinimized((m) => !m)}
                 className="btn btn-sm btn-light rounded-circle d-flex align-items-center justify-content-center"
                 style={{ width: 26, height: 26 }}
                 title={minimized ? "Maximize" : "Minimize"}
@@ -167,7 +197,7 @@ const ChatbotWidget = () => {
                     e.key === "Enter" && !e.shiftKey && handleSend()
                   }
                   style={{ resize: "none", fontSize: "0.9rem" }}
-                ></textarea>
+                />
                 <button
                   onClick={handleSend}
                   className="btn btn-toska d-flex align-items-center justify-content-center"

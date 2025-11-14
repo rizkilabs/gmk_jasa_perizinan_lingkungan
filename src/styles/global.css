@@ -131,7 +131,6 @@ body.dark-mode {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   padding: 2rem 1.5rem;
-  height: 100%;
 }
 
 .service-card:hover {
@@ -185,8 +184,9 @@ section + section {
 /* 🌿 Service Section Specific */
 .service-section {
   background-color: var(--gray);
-  padding: 80px 0;
+  padding-top: 80px;
   transition: background-color 0.4s ease;
+  padding-bottom: 5px;
 }
 
 /* 🌙 Service Section (Dark Mode) */
@@ -323,9 +323,9 @@ body.dark-mode .carousel-control-next-icon {
 /* 🌿 Footer Styling — 4 Columns + Map */
 .footer-section {
   background: linear-gradient(135deg, #e6f7f5, #d9f0ee, #c1e6e2);
-  padding: 70px 0 40px;
-  /* border-top: 1px solid rgba(0, 0, 0, 0.05); */
-  margin-top: 50px;
+  padding: 2% 0 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: 5vh;
 }
 
 .footer-section .container {
@@ -519,3 +519,11 @@ body.dark-mode .footer-bottom {
     transform: translateY(-3px);
   }
 }
+
+#layanan {
+  margin-top: -5vh;
+}
+
+/* body.dark-mode .service-detail-section {
+  padding-bottom: 400px;
+} */
