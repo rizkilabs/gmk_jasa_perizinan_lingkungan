@@ -1,0 +1,38 @@
+/* Dark mode: Full override for Bootstrap table */
+body.dark-mode .table {
+  background-color: #1e1e1e !important;
+  color: #e6e6e6 !important;
+}
+
+body.dark-mode .table > :not(caption) > * > * {
+  /* all <td> and <th> */
+  background-color: transparent !important;
+  color: #e6e6e6 !important;
+  border-color: #333 !important;
+}
+
+/* Thead */
+body.dark-mode .table thead th {
+  background-color: #262626 !important;
+  color: #f5f5f5 !important;
+  border-bottom: 1px solid #444 !important;
+}
+
+/* Striped rows */
+body.dark-mode .table.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: #2a2a2a !important;
+}
+
+body.dark-mode .table.table-striped > tbody > tr:nth-of-type(even) > * {
+  background-color: #1e1e1e !important;
+}
+
+/* Hover */
+body.dark-mode .table tbody tr:hover > * {
+  background-color: #333 !important;
+}
+
+/* Empty row */
+body.dark-mode .table tbody td.text-center {
+  color: #ccc !important;
+}

@@ -1,15 +1,19 @@
+// src/components/Navbar.jsx
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { NAV_LINKS, COLORS } from "../lib/constants";
+import useStore from "../hooks/useStore";
 
 function Navbar() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("darkMode") === "true"
   );
   const [shrink, setShrink] = useState(false);
+  const userLoggedIn = useStore((s) => s.userLoggedIn);
+  const logout = useStore((s) => s.logout);
 
-  // Shrink effect saat scroll
   useEffect(() => {
     const handleScroll = () => {
       setShrink(window.scrollY > 50);
@@ -18,7 +22,6 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Toggle dark mode
   const toggleDarkMode = () => {
     const nextMode = !darkMode;
     setDarkMode(nextMode);
@@ -30,13 +33,18 @@ function Navbar() {
     if (darkMode) document.body.classList.add("dark-mode");
   }, [darkMode]);
 
+  const handleLogout = () => {
+    logout();
+    navigate("/", { replace: true });
+  };
+
   return (
     <nav
       className={`navbar navbar-expand-lg fixed-top px-4 py-3 shadow-sm ${
         darkMode ? "navbar-glass dark" : "navbar-glass"
       } ${shrink ? "navbar-shrink" : ""}`}
       style={{
-        zIndex: 1000, // 🧱 pastiin di atas HeroSection
+        zIndex: 1000,
         backgroundColor: shrink
           ? darkMode
             ? "rgba(0,0,0,0.8)"
@@ -91,6 +99,24 @@ function Navbar() {
                 </Link>
               </li>
             ))}
+
+            {userLoggedIn ? (
+              <li className="nav-item mx-2">
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <li className="nav-item mx-2">
+                <Link className="btn-login" to="/login">
+                  Login
+                </Link>
+              </li>
+            )}
+
             <li className="nav-item mx-3">
               <button
                 className="dark-toggle"

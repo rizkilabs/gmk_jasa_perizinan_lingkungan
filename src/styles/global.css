@@ -546,3 +546,142 @@ body.dark-mode .footer-bottom {
 .timeline-item {
   color: black;
 }
+
+/* append to global.css */
+.sidebar-collapsed .nav-link span,
+.sidebar-collapsed .nav-item span {
+  display: none !important;
+}
+.sidebar-collapsed aside {
+  width: 80px !important;
+}
+
+/* ===== LOGIN CARD GLASS STYLE ===== */
+.login-glass-card {
+  width: 90%;
+  max-width: 420px;
+  padding: 2rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+body.dark-mode .login-glass-card {
+  background: rgba(43, 43, 43, 0.5);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.05);
+}
+
+.login-title {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+body.dark-mode .login-title {
+  color: var(--gray);
+}
+
+/* Input */
+.login-input {
+  border-radius: 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .login-input {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--gray);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* subtle hover */
+.login-glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(0, 191, 166, 0.15);
+}
+
+/* Login button style */
+.btn-login {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 999px; /* pill shape */
+  border: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn-login:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 0 12px rgba(0, 191, 166, 0.55);
+  transform: translateY(-1px);
+}
+
+/* Dark mode */
+body.dark-mode .btn-login {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+body.dark-mode .btn-login:hover {
+  box-shadow: 0 0 14px rgba(0, 255, 230, 0.65);
+}
+
+body.dark-mode table {
+  background-color: #1e1e1e !important;
+  color: #e5e5e5 !important;
+}
+
+body.dark-mode thead th {
+  background-color: #2c2c2c !important;
+  color: #fff !important;
+}
+
+body.dark-mode tbody tr {
+  background-color: #1e1e1e !important;
+  border-color: #333 !important;
+}
+
+body.dark-mode tbody tr:nth-child(even) {
+  background-color: #252525 !important;
+}
+
+body.dark-mode .table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #1a1a1a !important;
+}
+
+/* 🌙 FIX: Dark Mode Table yang pasti menang lawan Bootstrap */
+body.dark-mode .table,
+body.dark-mode table.table {
+  background-color: #1e1e1e !important;
+  color: #e5e5e5 !important;
+}
+
+body.dark-mode .table thead tr th,
+body.dark-mode table.table thead tr th {
+  background-color: #2c2c2c !important;
+  color: #ffffff !important;
+}
+
+/* Baris biasa */
+body.dark-mode .table tbody tr,
+body.dark-mode table.table tbody tr {
+  background-color: #1e1e1e !important;
+  color: #ddd !important;
+  border-color: #444 !important;
+}
+
+/* Baris ganjil (override .table-striped) */
+body.dark-mode .table.table-striped tbody tr:nth-of-type(odd),
+body.dark-mode table.table.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #252525 !important;
+  color: #e0e0e0 !important;
+}
+
+/* Hover */
+body.dark-mode table.table tbody tr:hover {
+  background-color: #333 !important;
+  color: #fff !important;
+}
