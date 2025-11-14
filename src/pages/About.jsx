@@ -1,14 +1,133 @@
 import React from "react";
-import MotionWrapper from "../components/MotionWrapper";
 import Layout from "../components/Layout";
+import MotionWrapper from "../components/MotionWrapper";
+import { Briefcase, Target, Users } from "lucide-react";
+import { motion } from "framer-motion";
+
+// Timeline reusable item
+function TimelineItem({ icon: Icon, title, desc }) {
+  return (
+    <motion.div
+      className="d-flex gap-3 mb-4 p-3 rounded-4 shadow-sm timeline-item"
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4 }}
+      viewport={{ once: true }}
+      style={{
+        background: "rgba(255, 255, 255, 0.85)",
+        border: "1px solid rgba(0,0,0,0.05)",
+      }}
+    >
+      <div
+        className="rounded-circle d-flex align-items-center justify-content-center icon-wrapper"
+        style={{
+          width: 55,
+          height: 55,
+          background: "var(--gray)",
+          boxShadow: "0 0 12px rgba(0, 191, 166, 0.2)",
+        }}
+      >
+        <Icon
+          size={28}
+          className="service-icon"
+          // small highlight effect
+        />
+      </div>
+
+      <div>
+        <h5 className="fw-semibold mb-1">{title}</h5>
+        <p className="mb-0 text-muted">{desc}</p>
+      </div>
+    </motion.div>
+  );
+}
+
+// Simple client logo carousel (auto-scroll)
+function ClientLogoCarousel() {
+  const logos = [
+    "/assets/clients/client1.png",
+    "/assets/clients/client2.png",
+    "/assets/clients/client3.png",
+    "/assets/clients/client4.png",
+  ];
+
+  return (
+    <div className="overflow-hidden mt-5 about-client-carousel">
+      <motion.div
+        className="d-flex gap-5 align-items-center"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{ duration: 15, ease: "linear", repeat: Infinity }}
+      >
+        {[...logos, ...logos].map((logo, i) => (
+          <img
+            key={i}
+            src={logo}
+            alt="client"
+            className="client-logo"
+            style={{
+              width: 140,
+              filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.15))",
+              transition: "transform 0.3s",
+            }}
+            onMouseOver={(e) =>
+              (e.currentTarget.style.transform = "scale(1.1)")
+            }
+            onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          />
+        ))}
+      </motion.div>
+    </div>
+  );
+}
 
 function About() {
   return (
     <Layout>
       <MotionWrapper>
-        <div className="container py-5">
-          <h1>About Page - Geo Mandiri Kreasi</h1>
-          <p>Selamat datang di website jasa perizinan lingkungan.</p>
+        <div className="container py-4" style={{ marginTop: "70px" }}>
+          {/* Header */}
+          <div className="text-center mb-5">
+            <h1 className="fw-bold service-title-section">
+              Tentang PT. Geo Mandiri Kreasi
+            </h1>
+            <p className="mt-2 service-desc-section">
+              Penyedia jasa perizinan lingkungan terpercaya untuk bisnis di
+              seluruh Indonesia.
+            </p>
+          </div>
+
+          {/* Timeline Section */}
+          <section className="mb-5">
+            <h3 className="fw-semibold mb-4 service-title-section">
+              Perjalanan Kami
+            </h3>
+
+            <TimelineItem
+              icon={Briefcase}
+              title="Didirikan"
+              desc="PT. Geo Mandiri Kreasi berdiri untuk membantu perusahaan memenuhi standar perizinan lingkungan."
+            />
+
+            <TimelineItem
+              icon={Target}
+              title="Visi Kami"
+              desc="Memberikan layanan yang cepat, akurat, dan sesuai regulasi terbaru."
+            />
+
+            <TimelineItem
+              icon={Users}
+              title="Tim Profesional"
+              desc="Didukung tenaga ahli lingkungan dengan pengalaman lebih dari 5 tahun."
+            />
+          </section>
+
+          {/* Client Section */}
+          <section className="mt-5 text-center">
+            <h3 className="fw-semibold service-title-section-client">
+              Telah Dipercaya Oleh
+            </h3>
+            <ClientLogoCarousel />
+          </section>
         </div>
       </MotionWrapper>
     </Layout>
