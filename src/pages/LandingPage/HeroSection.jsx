@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Typewriter from "typewriter-effect"; // typing effect
 import MotionWrapper from "../../components/MotionWrapper";
 
 const HeroSection = () => {
@@ -9,18 +10,15 @@ const HeroSection = () => {
       style={{
         height: "100vh",
         backgroundColor: "#000",
-        paddingTop: "80px", // 🧩 nambah jarak dikit di bawah navbar
+        paddingTop: "80px",
       }}
     >
-      {/* 🎬 Background Video */}
       <motion.div
         className="position-absolute top-0 start-0 w-100 h-100"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        style={{
-          zIndex: 0, // 🧩 ini penting
-        }}
+        style={{ zIndex: 0 }}
       >
         <video
           src="/assets/hero-bg.mp4"
@@ -36,19 +34,18 @@ const HeroSection = () => {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            transform: "translate(-50%, -50%) scale(1.28)", // 👈 zoom dikit
+            transform: "translate(-50%, -50%) scale(1.28)",
             zIndex: 0,
           }}
         ></video>
 
-        {/* 🌈 Gradient Overlay biar lebih soft */}
         <motion.div
           className="position-absolute top-0 start-0 w-100 h-100"
           style={{
             background:
               "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%)",
             zIndex: 1,
-            pointerEvents: "none", // penting juga!
+            pointerEvents: "none",
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.8 }}
@@ -56,7 +53,6 @@ const HeroSection = () => {
         ></motion.div>
       </motion.div>
 
-      {/* ✨ Hero Content */}
       <MotionWrapper>
         <motion.div
           className="px-3"
@@ -79,7 +75,16 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1 }}
           >
-            Solusi AI untuk Lingkungan yang Lebih Baik 🌿
+            <Typewriter
+              options={{
+                strings: ["Solusi untuk Lingkungan yang Lebih Baik 🌿"],
+                autoStart: true,
+                loop: true,
+                deleteSpeed: 60,
+                delay: 50,
+                pauseFor: 1200, // pause biar terlihat natural
+              }}
+            />
           </motion.h1>
 
           <motion.p

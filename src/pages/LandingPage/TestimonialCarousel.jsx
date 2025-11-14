@@ -39,7 +39,7 @@ const TestimonialCarousel = () => {
 
       <Carousel
         fade
-        interval={2000}
+        interval={1500}
         activeIndex={index}
         onSelect={handleSelect}
         indicators={true}
@@ -48,7 +48,7 @@ const TestimonialCarousel = () => {
       >
         {testimonials.map((t, i) => (
           <Carousel.Item key={i}>
-            <Fade in={index === i} timeout={600}>
+            <Fade in={index === i} timeout={9000}>
               <div className="d-flex justify-content-center">
                 <div
                   className="card testimonial-card shadow-lg border-0 rounded-4 p-5 text-center"

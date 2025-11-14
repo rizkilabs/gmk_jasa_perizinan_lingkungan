@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import MotionWrapper from "../components/MotionWrapper";
 import { Briefcase, Target, Users } from "lucide-react";
 import { motion } from "framer-motion";
+import AboutPhoto from "../assets/about-photo.jpg";
 
 // Timeline reusable item
 function TimelineItem({ icon: Icon, title, desc }) {
@@ -94,6 +95,19 @@ function About() {
               Penyedia jasa perizinan lingkungan terpercaya untuk bisnis di
               seluruh Indonesia.
             </p>
+            {/* About Photo Section */}
+            <div className="text-center my-4">
+              <img
+                src={AboutPhoto}
+                alt="Tentang Kami"
+                style={{
+                  width: "100%",
+                  maxWidth: "550px",
+                  borderRadius: "20px",
+                  boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+                }}
+              />
+            </div>
           </div>
 
           {/* Timeline Section */}
