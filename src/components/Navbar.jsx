@@ -14,14 +14,14 @@ function Navbar() {
   const userLoggedIn = useStore((s) => s.userLoggedIn);
   const logout = useStore((s) => s.logout);
 
+  // Shrink navbar on scroll
   useEffect(() => {
-    const handleScroll = () => {
-      setShrink(window.scrollY > 50);
-    };
+    const handleScroll = () => setShrink(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Toggle dark mode
   const toggleDarkMode = () => {
     const nextMode = !darkMode;
     setDarkMode(nextMode);
@@ -54,6 +54,7 @@ function Navbar() {
       }}
     >
       <div className="container-fluid">
+        {/* Brand */}
         <Link
           to="/"
           className="navbar-brand fw-bold"
@@ -65,20 +66,20 @@ function Navbar() {
           GeoMandiri
         </Link>
 
+        {/* Mobile Toggle */}
         <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
+        {/* Navigation items */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto align-items-lg-center">
+            {/* Dynamic nav links */}
             {NAV_LINKS.map((link) => (
               <li className="nav-item mx-2" key={link.path}>
                 <Link
@@ -100,6 +101,7 @@ function Navbar() {
               </li>
             ))}
 
+            {/* Auth button */}
             {userLoggedIn ? (
               <li className="nav-item mx-2">
                 <button
@@ -111,12 +113,30 @@ function Navbar() {
               </li>
             ) : (
               <li className="nav-item mx-2">
-                <Link className="btn-login" to="/login">
-                  Login
+                {/* SIGN UP BUTTON (baru) */}
+                <Link
+                  className="btn px-4 py-2 text-white"
+                  to="/register"
+                  style={{
+                    backgroundColor: COLORS.primary,
+                    borderRadius: "10px",
+                    transition: "all 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = "scale(1.05)";
+                    e.target.style.boxShadow = "0 4px 12px rgba(0,191,166,0.6)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = "scale(1)";
+                    e.target.style.boxShadow = "none";
+                  }}
+                >
+                  Pendaftaran
                 </Link>
               </li>
             )}
 
+            {/* Dark Mode Toggle */}
             <li className="nav-item mx-3">
               <button
                 className="dark-toggle"

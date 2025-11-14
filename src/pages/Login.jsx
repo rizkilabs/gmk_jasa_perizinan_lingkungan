@@ -1,94 +1,124 @@
 // src/pages/Login.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useStore from "../hooks/useStore";
+import { toast } from "react-toastify";
+import MotionWrapper from "../components/MotionWrapper";
 
 export default function Login() {
   const navigate = useNavigate();
-  const login = useStore((s) => s.login);
-
-  const [username, setUsername] = useState("");
+  const [identifier, setIdentifier] = useState(""); // email or phone
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!username || !password) {
-      setError("Username dan password wajib diisi.");
+    if (!identifier || !password) {
+      toast.error("Masukkan Email/No HP dan Password", {
+        position: "top-center",
+        autoClose: 3000,
+      });
       return;
     }
 
-    const user = {
-      name: username,
-      token: "demo-token",
-    };
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-    login(user);
-    navigate("/dashboard", { replace: true });
+    // try find by email (case-insensitive) or phone exact match
+    const user = users.find(
+      (u) =>
+        (u.email && u.email.toLowerCase() === identifier.toLowerCase()) ||
+        (u.phone && u.phone === identifier)
+    );
+
+    if (!user) {
+      toast.error("User tidak ditemukan", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+      return;
+    }
+
+    if (user.password !== password) {
+      toast.error("Password salah", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+      return;
+    }
+
+    // login success
+    localStorage.setItem(
+      "loggedInUser",
+      JSON.stringify({ id: user.id, name: user.name, email: user.email })
+    );
+    toast.success("Login berhasil! Mengarahkan ke dashboard...", {
+      position: "top-center",
+      autoClose: 1600,
+    });
+
+    setTimeout(() => navigate("/dashboard"), 1700);
   };
 
   return (
-    <div
-      className="d-flex justify-content-center align-items-center"
-      style={{
-        minHeight: "100vh",
-        paddingTop: "80px",
-        background: "var(--gray)",
-      }}
-    >
-      <div className="login-glass-card">
-        <h3 className="text-center mb-3 login-title">Masuk</h3>
-
-        {error && (
-          <div className="alert alert-danger py-2 text-center">{error}</div>
-        )}
-
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label className="form-label" style={{ fontWeight: 500 }}>
-              Username
-            </label>
-            <input
-              className="form-control login-input"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-
-          <div className="mb-3">
-            <label className="form-label" style={{ fontWeight: 500 }}>
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control login-input"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-
-          <button
-            className="btn w-100 btn-toska"
-            type="submit"
-            style={{
-              padding: "10px 0",
-              borderRadius: "10px",
-              fontWeight: 600,
-              fontSize: "1rem",
-            }}
-          >
-            Login
-          </button>
-        </form>
-
-        <p
-          className="text-center mt-3"
-          style={{ fontSize: "0.9rem", opacity: 0.7 }}
+    <MotionWrapper>
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ minHeight: "100vh" }}
+      >
+        <div
+          className="login-glass-card"
+          style={{ maxWidth: 480, width: "95%" }}
         >
-          *Gunakan username & password bebas (demo)
-        </p>
+          <h2 className="text-center mb-3 login-title">Masuk</h2>
+          <p className="text-center text-muted" style={{ fontSize: 14 }}>
+            Masuk menggunakan Email atau Nomor HP
+          </p>
+
+          <form onSubmit={handleSubmit} className="mt-3">
+            <div className="mb-3">
+              <label className="form-label fw-semibold">
+                Email atau Nomor HP
+              </label>
+              <input
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
+                className="form-control login-input"
+                placeholder="email@contoh.com atau 08xxxx"
+                autoComplete="username"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="form-label fw-semibold">Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-control login-input"
+                placeholder="Password"
+                autoComplete="current-password"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="btn w-100 btn-toska fw-semibold rounded-pill"
+            >
+              Masuk
+            </button>
+
+            <p className="text-center mt-3" style={{ fontSize: 14 }}>
+              Belum punya akun?{" "}
+              <a
+                href="/register"
+                style={{ color: "var(--primary)" }}
+                className="text-decoration-none"
+              >
+                Daftar
+              </a>
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
+    </MotionWrapper>
   );
 }

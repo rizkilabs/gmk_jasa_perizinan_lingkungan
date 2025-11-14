@@ -1,20 +1,16 @@
 // src/components/PrivateRoute.jsx
 import React from "react";
-import { Navigate, useLocation } from "react-router-dom";
-import useStore from "../hooks/useStore";
+import { Navigate } from "react-router-dom";
 
-/**
- * PrivateRoute wrapper for react-router v6.
- * If userLoggedIn is false -> redirect to /login.
- * Keeps requested path in state for potential redirect after login.
- */
 export default function PrivateRoute({ children }) {
-  const userLoggedIn = useStore((s) => s.userLoggedIn);
-  const location = useLocation();
+  // Check login from localStorage
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
-  if (!userLoggedIn) {
-    // send user to login and preserve current path
-    return <Navigate to="/login" replace state={{ from: location }} />;
+  // If no user, redirect to login
+  if (!user) {
+    return <Navigate to="/login" replace />;
   }
+
+  // If logged in, show children
   return children;
 }

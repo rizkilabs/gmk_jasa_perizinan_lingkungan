@@ -1,79 +1,109 @@
 // src/pages/dashboard/Sidebar.jsx
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { Home, List, MessageSquare, PlusSquare, LogIn } from "lucide-react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Home, List, MessageSquare, PlusSquare, LogOut } from "lucide-react";
 import { useStore } from "../../hooks/useStore";
 
-/**
- * Sidebar with nav links. Collapsible through 'collapsed' prop.
- */
 export default function Sidebar({ collapsed, setCollapsed }) {
   const logout = useStore((s) => s.logout);
-  const login = useStore((s) => s.login);
+  const navigate = useNavigate();
+
+  // Handle logout then redirect
+  const handleLogout = () => {
+    logout();
+    navigate("/login"); // redirect after logout
+  };
 
   return (
     <aside
-      className="d-flex flex-column position-fixed h-100"
+      className="d-flex flex-column position-fixed h-100 shadow-sm"
       style={{
         width: collapsed ? 80 : 250,
-        // background: "linear-gradient(180deg,#ffffff,#f7f9fb)",
-        borderRight: "1px solid rgba(0,0,0,0.05)",
-        transition: "width 0.25s",
+        // background: "#ffffff",
+        borderRight: "1px solid rgba(0,0,0,0.06)",
+        transition: "width 0.25s ease",
         zIndex: 1030,
       }}
     >
+      {/* LOGO + Collapse Button */}
       <div className="p-3 d-flex align-items-center justify-content-between">
         <div className="d-flex align-items-center gap-2">
           <div
             style={{
               width: 40,
               height: 40,
-              borderRadius: 8,
+              borderRadius: 10,
               background: "#00bfa6",
             }}
           />
-          {!collapsed && <strong>GeoEnv Admin</strong>}
+          {!collapsed && <strong style={{ fontSize: 16 }}>GeoEnv Admin</strong>}
         </div>
+
         <button
           className="btn btn-sm btn-light"
           onClick={() => setCollapsed((c) => !c)}
+          style={{ borderRadius: 6 }}
         >
           {collapsed ? "→" : "←"}
         </button>
       </div>
 
+      {/* MENU */}
       <nav className="flex-grow-1">
-        <ul className="nav flex-column p-2">
+        <ul className="nav flex-column px-2">
+          {/* Overview */}
           <li className="nav-item">
             <NavLink
-              className="nav-link d-flex align-items-center gap-2 py-2"
+              className={({ isActive }) =>
+                `nav-link d-flex align-items-center gap-2 py-2 px-2 rounded ${
+                  isActive ? "fw-semibold" : ""
+                }`
+              }
               to="/dashboard"
             >
               <Home size={18} />
               {!collapsed && <span>Overview</span>}
             </NavLink>
           </li>
+
+          {/* Permintaan Izin */}
           <li className="nav-item">
             <NavLink
-              className="nav-link d-flex align-items-center gap-2 py-2"
+              className={({ isActive }) =>
+                `nav-link d-flex align-items-center gap-2 py-2 px-2 rounded ${
+                  isActive ? "fw-semibold" : ""
+                }`
+              }
               to="/dashboard/permit"
             >
               <List size={18} />
               {!collapsed && <span>Permintaan Izin</span>}
             </NavLink>
           </li>
+
+          {/* Chatbot */}
           <li className="nav-item">
             <NavLink
-              className="nav-link d-flex align-items-center gap-2 py-2"
+              className={({ isActive }) =>
+                `nav-link d-flex align-items-center gap-2 py-2 px-2 rounded ${
+                  isActive ? "fw-semibold" : ""
+                }`
+              }
               to="/dashboard/chatbot"
             >
               <MessageSquare size={18} />
               {!collapsed && <span>Chatbot Logs</span>}
             </NavLink>
           </li>
+
+          {/* Tambah Izin */}
           <li className="nav-item mt-3">
             <NavLink
-              className="nav-link d-flex align-items-center gap-2 py-2"
+              className={({ isActive }) =>
+                `nav-link d-flex align-items-center gap-2 py-2 px-2 rounded ${
+                  isActive ? "fw-semibold" : ""
+                }`
+              }
               to="/dashboard/permit?mode=add"
             >
               <PlusSquare size={18} />
@@ -83,21 +113,15 @@ export default function Sidebar({ collapsed, setCollapsed }) {
         </ul>
       </nav>
 
+      {/* FOOTER: LOGOUT ONLY */}
       <div className="p-3 border-top">
-        <div className="d-flex gap-2">
-          <button
-            className="btn btn-outline-secondary btn-sm flex-grow-1"
-            onClick={() => login()}
-          >
-            <LogIn size={14} /> {!collapsed && <span>Login</span>}
-          </button>
-          <button
-            className="btn btn-outline-danger btn-sm"
-            onClick={() => logout()}
-          >
-            {!collapsed ? "Logout" : "⎋"}
-          </button>
-        </div>
+        <button
+          className="btn btn-outline-danger btn-sm w-100 d-flex align-items-center justify-content-center gap-2"
+          onClick={handleLogout}
+        >
+          <LogOut size={14} />
+          {!collapsed && <span>Logout</span>}
+        </button>
       </div>
     </aside>
   );
