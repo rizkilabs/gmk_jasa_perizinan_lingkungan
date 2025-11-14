@@ -11,11 +11,17 @@ import ServiceDocuments from "../components/service/ServiceDocuments";
 import ServiceProcess from "../components/service/ServiceProcess";
 import ServiceSidebar from "../components/service/ServiceSidebar";
 
+// NEW: estimator modal
+import PriceEstimatorModal from "../components/estimator/PriceEstimatorModal";
+
 export default function ServiceDetailPage() {
   const { slug } = useParams();
 
   // Find service data by slug
   const service = services.find((s) => s.slug === slug);
+
+  // modal state
+  const [openEstimator, setOpenEstimator] = React.useState(false);
 
   // If slug not found
   if (!service) {
@@ -74,11 +80,21 @@ export default function ServiceDetailPage() {
 
             {/* RIGHT SIDEBAR */}
             <div className="col-lg-4">
-              <ServiceSidebar service={service} />
+              <ServiceSidebar
+                service={service}
+                onOpenEstimator={() => setOpenEstimator(true)}
+              />
             </div>
           </div>
         </div>
       </section>
+
+      {/* Price Estimator Modal */}
+      <PriceEstimatorModal
+        open={openEstimator}
+        onClose={() => setOpenEstimator(false)}
+        service={service}
+      />
     </Layout>
   );
 }

@@ -527,3 +527,10 @@ body.dark-mode .footer-bottom {
 /* body.dark-mode .service-detail-section {
   padding-bottom: 400px;
 } */
+
+/* modal overlay */
+.estimator-overlay {
+  background: rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
