@@ -38,15 +38,15 @@ function Footer() {
           <div className="col-12 col-md-6 col-lg-3 mb-4">
             <h6 className="text-uppercase mb-3 fw-semibold">Kontak Kami</h6>
             <p className="mb-1">
-              <i className="bi bi-geo-alt-fill me-2"></i>Jl. Raya Gunung Sindur
-              No. 88, Bogor
+              <i className="bi bi-geo-alt-fill me-2"></i>Rukan Kaca Hijau Jln.
+              Raya Jatiwaringin No.6C
             </p>
             <p className="mb-1">
-              <i className="bi bi-telephone-fill me-2"></i>(021) 1234-5678
+              <i className="bi bi-telephone-fill me-2"></i>(021) 862-1510
             </p>
             <p className="mb-1">
               <i className="bi bi-envelope-fill me-2"></i>
-              info@geomandirigreasi.co.id
+              info@geomandiri.co.id
             </p>
 
             <div className="mt-3 social-icons">
@@ -67,11 +67,10 @@ function Footer() {
             <h6 className="text-uppercase mb-3 fw-semibold">Lokasi Kami</h6>
             <div className="ratio ratio-4x3 rounded shadow-sm footer-map-container">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.532467245193!2d106.6883!3d-6.199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5e4bcdbe38b%3A0x123456789abcdef!2sPT%20Geo%20Mandiri%20Kreasi!5e0!3m2!1sid!2sid!4v1699876543210!5m2!1sid!2sid"
-                allowFullScreen=""
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d63457.97930801433!2d106.906767!3d-6.247425000000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f32b83252e77%3A0xd4495dbdb34e3f71!2sGeo%20Mandiri%20Kreasi.%20PT!5e0!3m2!1sid!2sus!4v1763198031494!5m2!1sid!2sus"
+                allowfullscreen=""
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Lokasi Geo Mandiri Kreasi"
+                referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
           </div>
@@ -82,7 +81,7 @@ function Footer() {
         {/* Copyright */}
         <div className="text-center py-3">
           <small>
-            © {new Date().getFullYear()} Geo Mandiri Kreasi. All rights
+            © {new Date().getFullYear()} PT. GEO MANDIRI KREASI . All rights
             reserved.
           </small>
         </div>
