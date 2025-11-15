@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import MotionWrapper from "../components/MotionWrapper";
+import Navbar from "../components/Navbar";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -102,18 +103,17 @@ export default function Register() {
 
   return (
     <MotionWrapper>
+      <Navbar />
       <div
-        className="d-flex justify-content-center align-items-center"
+        className="d-flex justify-content-center align-items-center mt-5"
         style={{ minHeight: "100vh" }}
       >
         <div
           className="login-glass-card"
           style={{ maxWidth: 520, width: "95%" }}
         >
-          <h2 className="text-center mb-3 login-title">
-            Pendaftaran Usaha (singkat)
-          </h2>
-          <p className="text-center text-muted" style={{ fontSize: 14 }}>
+          <h2 className="text-center mb-3 login-title">Pendaftaran Usaha</h2>
+          <p className="text-center" style={{ fontSize: 14 }}>
             Isi data dasar — bisa dipakai untuk login dengan Email atau No HP
           </p>
 

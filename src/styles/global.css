@@ -685,3 +685,7 @@ body.dark-mode table.table tbody tr:hover {
   background-color: #333 !important;
   color: #fff !important;
 }
+
+input::placeholder {
+  color: gray !important;
+}

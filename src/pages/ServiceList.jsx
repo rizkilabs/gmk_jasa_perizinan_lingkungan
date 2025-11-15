@@ -2,6 +2,7 @@
 import React, { useMemo, useState } from "react";
 import Layout from "../components/Layout";
 import ServiceCard from "../components/ServiceCard";
+import ChatbotWidget from "./LandingPage/ChatbotWidget";
 import { services } from "../lib/data";
 import { motion } from "framer-motion";
 
@@ -105,6 +106,7 @@ function ServiceList() {
           </div>
         </div>
       </section>
+      <ChatbotWidget />
     </Layout>
   );
 }

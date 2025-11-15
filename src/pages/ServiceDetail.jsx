@@ -10,6 +10,7 @@ import ServiceContent from "../components/service/ServiceContent";
 import ServiceDocuments from "../components/service/ServiceDocuments";
 import ServiceProcess from "../components/service/ServiceProcess";
 import ServiceSidebar from "../components/service/ServiceSidebar";
+import ChatbotWidget from "./LandingPage/ChatbotWidget";
 
 // NEW: estimator modal
 import PriceEstimatorModal from "../components/estimator/PriceEstimatorModal";
@@ -95,6 +96,7 @@ export default function ServiceDetailPage() {
         onClose={() => setOpenEstimator(false)}
         service={service}
       />
+      <ChatbotWidget />
     </Layout>
   );
 }

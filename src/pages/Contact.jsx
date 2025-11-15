@@ -4,6 +4,7 @@ import MotionWrapper from "../components/MotionWrapper";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import ChatbotWidget from "./LandingPage/ChatbotWidget";
 
 /**
  * Contact page - premium version matching global.css
@@ -15,7 +16,7 @@ import { useForm } from "react-hook-form";
  * Replace PHONE_NUMBER and EMAIL with real values.
  */
 
-const PHONE_NUMBER = "+6281234567890"; // replace with real admin number
+const PHONE_NUMBER = "+6281315816277"; // replace with real admin number
 const EMAIL = "info@geomandiri.co.id";
 
 function ContactCard({ Icon, title, children }) {
@@ -120,7 +121,7 @@ export default function Contact() {
           <div className="row g-3 mb-4">
             <div className="col-12 col-md-4">
               <ContactCard Icon={MapPin} title="Alamat">
-                Jl. Contoh No.123, Jakarta — Indonesia
+                Rukan Kaca Hijau Jln. Raya Jatiwaringin No.6C
               </ContactCard>
             </div>
 
@@ -267,19 +268,18 @@ export default function Contact() {
                 <div style={{ padding: 16 }}>
                   <h5 className="fw-semibold mb-3">Lokasi Kami</h5>
                   <p className="mb-2" style={{ fontSize: 14 }}>
-                    Jl. Contoh No.123, Jakarta — Kunjungi kami atau hubungi
-                    untuk jadwal pertemuan.
+                    Rukan Kaca Hijau Jln. Raya Jatiwaringin No.6C — Kunjungi
+                    kami atau hubungi untuk jadwal pertemuan.
                   </p>
                 </div>
 
                 <div className="ratio ratio-16x9">
                   <iframe
-                    src="https://www.google.com/maps?q=Jakarta&output=embed"
-                    title="Geo Mandiri Kreasi - Jakarta"
-                    allowFullScreen
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d63457.97930801433!2d106.906767!3d-6.247425000000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f32b83252e77%3A0xd4495dbdb34e3f71!2sGeo%20Mandiri%20Kreasi.%20PT!5e0!3m2!1sid!2sus!4v1763198031494!5m2!1sid!2sus"
+                    allowfullscreen=""
                     loading="lazy"
-                    style={{ border: 0 }}
-                  />
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
               </motion.div>
             </div>
@@ -308,6 +308,7 @@ export default function Contact() {
           </div>
         </div>
       </MotionWrapper>
+      <ChatbotWidget />
     </Layout>
   );
 }

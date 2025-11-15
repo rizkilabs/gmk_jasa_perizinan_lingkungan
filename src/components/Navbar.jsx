@@ -102,6 +102,7 @@ function Navbar() {
             ))}
 
             {/* Auth button */}
+            {/* Auth button */}
             {userLoggedIn ? (
               <li className="nav-item mx-2">
                 <button
@@ -112,28 +113,31 @@ function Navbar() {
                 </button>
               </li>
             ) : (
-              <li className="nav-item mx-2">
-                {/* SIGN UP BUTTON (baru) */}
-                <Link
-                  className="btn px-4 py-2 text-white"
-                  to="/register"
-                  style={{
-                    backgroundColor: COLORS.primary,
-                    borderRadius: "10px",
-                    transition: "all 0.3s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.transform = "scale(1.05)";
-                    e.target.style.boxShadow = "0 4px 12px rgba(0,191,166,0.6)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.transform = "scale(1)";
-                    e.target.style.boxShadow = "none";
-                  }}
-                >
-                  Pendaftaran
-                </Link>
-              </li>
+              pathname !== "/register" && (
+                <li className="nav-item mx-2">
+                  {/* SIGN UP BUTTON (baru) */}
+                  <Link
+                    className="btn px-4 py-2 text-white"
+                    to="/register"
+                    style={{
+                      backgroundColor: COLORS.primary,
+                      borderRadius: "10px",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.transform = "scale(1.05)";
+                      e.target.style.boxShadow =
+                        "0 4px 12px rgba(0,191,166,0.6)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.transform = "scale(1)";
+                      e.target.style.boxShadow = "none";
+                    }}
+                  >
+                    Pendaftaran
+                  </Link>
+                </li>
+              )
             )}
 
             {/* Dark Mode Toggle */}

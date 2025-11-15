@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import MotionWrapper from "../components/MotionWrapper";
+import Navbar from "../components/Navbar";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -60,6 +61,7 @@ export default function Login() {
 
   return (
     <MotionWrapper>
+      <Navbar />
       <div
         className="d-flex justify-content-center align-items-center"
         style={{ minHeight: "100vh" }}
@@ -69,7 +71,7 @@ export default function Login() {
           style={{ maxWidth: 480, width: "95%" }}
         >
           <h2 className="text-center mb-3 login-title">Masuk</h2>
-          <p className="text-center text-muted" style={{ fontSize: 14 }}>
+          <p className="text-center" style={{ fontSize: 14 }}>
             Masuk menggunakan Email atau Nomor HP
           </p>
 

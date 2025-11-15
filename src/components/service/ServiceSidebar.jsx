@@ -67,7 +67,7 @@ export default function ServiceSidebar({ service, onOpenEstimator }) {
           <a
             className="btn btn-toska flex-grow-1"
             style={{ color: "black" }}
-            href={`https://wa.me/6281234567890?text=${encodeURIComponent(
+            href={`https://wa.me/6281315816277?text=${encodeURIComponent(
               `Halo, saya ingin tanya tentang: ${service.title}`
             )}`}
             target="_blank"

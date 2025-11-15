@@ -4,6 +4,7 @@ import MotionWrapper from "../components/MotionWrapper";
 import { Briefcase, Target, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import AboutPhoto from "../assets/about-photo.jpg";
+import ChatbotWidget from "./LandingPage/ChatbotWidget";
 
 // Timeline reusable item
 function TimelineItem({ icon: Icon, title, desc }) {
@@ -144,6 +145,7 @@ function About() {
           </section>
         </div>
       </MotionWrapper>
+      <ChatbotWidget />
     </Layout>
   );
 }

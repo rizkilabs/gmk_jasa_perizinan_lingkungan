@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { getReactIcon } from "../../lib/iconMap";
 
-const WHATSAPP_NUMBER = "6281234567890"; // replace with your WA number
+const WHATSAPP_NUMBER = "6281315816277"; // replace with your WA number
 
 function buildWhatsAppLink(number, text) {
   const encoded = encodeURIComponent(text || "");
@@ -51,10 +51,20 @@ export default function ServiceHero({ service, navigate }) {
       {/* CTA group */}
       <div className="d-flex justify-content-center gap-3 mb-4 flex-wrap">
         <a
-          href={buildWhatsAppLink(
-            WHATSAPP_NUMBER,
-            `Halo, saya ingin tanya tentang layanan: ${service.title}`
-          )}
+          onClick={() => {
+            window.dispatchEvent(
+              new CustomEvent("openChatbot", {
+                detail: {
+                  message: `Saya ingin konsultasi gratis mengenai: ${service.title}`,
+                  autoSend: true,
+                },
+              })
+            );
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: "smooth",
+            });
+          }}
           target="_blank"
           rel="noreferrer"
           className="btn btn-toska"
@@ -65,14 +75,6 @@ export default function ServiceHero({ service, navigate }) {
         <button
           className="btn btn-light btn-outline-dark"
           onClick={() => {
-            window.dispatchEvent(
-              new CustomEvent("openChatbot", {
-                detail: {
-                  message: `Saya ingin konsultasi gratis mengenai: ${service.title}`,
-                  autoSend: true,
-                },
-              })
-            );
             window.scrollTo({
               top: document.body.scrollHeight,
               behavior: "smooth",
