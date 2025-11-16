@@ -1057,9 +1057,10 @@ body.dark-mode .media-caption {
   font-size: 26px;
   line-height: 1;
   cursor: pointer;
-  color: #222;
+  color: white;
   padding: 6px 10px;
   border-radius: 8px;
+  font-size: 4vh;
   transition: background 0.18s ease;
 }
 

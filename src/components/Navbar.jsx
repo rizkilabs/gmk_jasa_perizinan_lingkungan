@@ -196,7 +196,7 @@ function Navbar() {
               pathname !== "/register" && (
                 <li className="nav-item mx-2">
                   <Link
-                    className="btn px-4 py-2 text-white"
+                    className="btn px-4 py-2"
                     to="/register"
                     style={{
                       backgroundColor: COLORS.primary,
