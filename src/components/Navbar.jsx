@@ -11,22 +11,27 @@ function Navbar() {
     localStorage.getItem("darkMode") === "true"
   );
   const [shrink, setShrink] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+
   const userLoggedIn = useStore((s) => s.userLoggedIn);
   const logout = useStore((s) => s.logout);
 
-  // Shrink navbar on scroll
+  // Split NAV_LINKS
+  const tentangIndex = NAV_LINKS.findIndex((l) => l.name === "Tentang");
+  const beforeTentang = NAV_LINKS.slice(0, tentangIndex); // Beranda, Layanan
+  const afterTentang = NAV_LINKS.slice(tentangIndex + 1); // Kontak, Dashboard
+
   useEffect(() => {
     const handleScroll = () => setShrink(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Toggle dark mode
   const toggleDarkMode = () => {
-    const nextMode = !darkMode;
-    setDarkMode(nextMode);
-    document.body.classList.toggle("dark-mode", nextMode);
-    localStorage.setItem("darkMode", nextMode);
+    const mode = !darkMode;
+    setDarkMode(mode);
+    document.body.classList.toggle("dark-mode", mode);
+    localStorage.setItem("darkMode", mode);
   };
 
   useEffect(() => {
@@ -54,7 +59,6 @@ function Navbar() {
       }}
     >
       <div className="container-fluid">
-        {/* Brand */}
         <Link
           to="/"
           className="navbar-brand fw-bold"
@@ -66,7 +70,6 @@ function Navbar() {
           GeoMandiri
         </Link>
 
-        {/* Mobile Toggle */}
         <button
           className="navbar-toggler"
           type="button"
@@ -76,11 +79,10 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Navigation items */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto align-items-lg-center">
-            {/* Dynamic nav links */}
-            {NAV_LINKS.map((link) => (
+            {/* BEFORE TENTANG */}
+            {beforeTentang.map((link) => (
               <li className="nav-item mx-2" key={link.path}>
                 <Link
                   to={link.path}
@@ -101,8 +103,86 @@ function Navbar() {
               </li>
             ))}
 
-            {/* Auth button */}
-            {/* Auth button */}
+            {/* DROPDOWN TENTANG */}
+            <li className="nav-item dropdown mx-2 position-relative">
+              <button
+                className="btn nav-link"
+                onClick={() => setOpenDropdown(!openDropdown)}
+                style={{
+                  color: pathname.includes("tentang")
+                    ? COLORS.primary
+                    : darkMode
+                    ? COLORS.light
+                    : COLORS.dark,
+                  cursor: "pointer",
+                }}
+              >
+                Tentang ▾
+              </button>
+
+              <ul
+                className="dropdown-menu"
+                style={{
+                  display: openDropdown ? "block" : "none",
+                  marginTop: "6px",
+                  padding: "10px 12px",
+                  borderRadius: "10px",
+                  backgroundColor: darkMode ? "#333" : "#fff",
+                }}
+              >
+                <li style={{ marginBottom: "6px" }}>
+                  <Link
+                    className="dropdown-item drop"
+                    to="/tentang"
+                    style={{ color: darkMode ? "#fff" : "#000" }}
+                  >
+                    Tentang Kami
+                  </Link>
+                </li>
+                <li style={{ marginBottom: "6px" }}>
+                  <Link
+                    className="dropdown-item"
+                    to="/portfolio"
+                    style={{ color: darkMode ? "#fff" : "#000" }}
+                  >
+                    Portfolio
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="dropdown-item"
+                    to="/dokumentasi"
+                    style={{ color: darkMode ? "#fff" : "#000" }}
+                  >
+                    Dokumentasi
+                  </Link>
+                </li>
+              </ul>
+            </li>
+
+            {/* AFTER TENTANG */}
+            {afterTentang.map((link) => (
+              <li className="nav-item mx-2" key={link.path}>
+                <Link
+                  to={link.path}
+                  className={`nav-link ${
+                    pathname === link.path ? "active fw-semibold" : ""
+                  }`}
+                  style={{
+                    color:
+                      pathname === link.path
+                        ? COLORS.primary
+                        : darkMode
+                        ? COLORS.light
+                        : COLORS.dark,
+                  }}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+
+            {/* AUTH */}
             {userLoggedIn ? (
               <li className="nav-item mx-2">
                 <button
@@ -115,7 +195,6 @@ function Navbar() {
             ) : (
               pathname !== "/register" && (
                 <li className="nav-item mx-2">
-                  {/* SIGN UP BUTTON (baru) */}
                   <Link
                     className="btn px-4 py-2 text-white"
                     to="/register"
@@ -124,15 +203,6 @@ function Navbar() {
                       borderRadius: "10px",
                       transition: "all 0.3s ease",
                     }}
-                    onMouseEnter={(e) => {
-                      e.target.style.transform = "scale(1.05)";
-                      e.target.style.boxShadow =
-                        "0 4px 12px rgba(0,191,166,0.6)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.transform = "scale(1)";
-                      e.target.style.boxShadow = "none";
-                    }}
                   >
                     Pendaftaran
                   </Link>
@@ -140,13 +210,8 @@ function Navbar() {
               )
             )}
 
-            {/* Dark Mode Toggle */}
             <li className="nav-item mx-3">
-              <button
-                className="dark-toggle"
-                onClick={toggleDarkMode}
-                title="Toggle Dark Mode"
-              >
+              <button className="dark-toggle" onClick={toggleDarkMode}>
                 {darkMode ? "🌙" : "☀️"}
               </button>
             </li>

@@ -1,0 +1,119 @@
+.
+|-- README.md
+|-- eslint.config.js
+|-- index.html
+|-- package-lock.json
+|-- package.json
+|-- public/
+|   |-- assets/
+|   |   |-- clients/
+|   |   |   |-- client1.png
+|   |   |   |-- client2.png
+|   |   |   |-- client3.png
+|   |   |   |-- client4.png
+|   |   |   |-- client5.png
+|   |   |   |-- client6.png
+|   |   |   `-- client7.png
+|   |   |-- desktop.ini
+|   |   `-- hero-bg.mp4
+|   |-- geomandiri-com.jpg
+|   `-- vite.svg
+|-- src/
+|   |-- App.jsx
+|   |-- assets/
+|   |   |-- about-photo.jpg
+|   |   |-- clients/
+|   |   |   |-- client1.png
+|   |   |   |-- client2.png
+|   |   |   |-- client3.png
+|   |   |   |-- client4.png
+|   |   |   |-- client5.png
+|   |   |   |-- client6.png
+|   |   |   |-- client7.png
+|   |   |   `-- desktop.ini
+|   |   |-- dokumentasi/
+|   |   |   |-- IMG-20251027-WA0067.jpg
+|   |   |   |-- IMG-20251027-WA0076.jpg
+|   |   |   |-- doc1.jpg
+|   |   |   `-- doc2.jpg
+|   |   |-- hero-bg.mp4
+|   |   |-- icons/
+|   |   `-- portfolio/
+|   |       |-- IMG-20251027-WA0066.jpg
+|   |       |-- portfolio1.jpg
+|   |       |-- portfolio2.jpg
+|   |       `-- portfolio3.jpg
+|   |-- components/
+|   |   |-- Footer.jsx
+|   |   |-- Layout.jsx
+|   |   |-- MotionWrapper.jsx
+|   |   |-- Navbar.jsx
+|   |   |-- PrivateRoute.jsx
+|   |   |-- ServiceCard.jsx
+|   |   |-- about/
+|   |   |   |-- AboutPage.jsx
+|   |   |   |-- ClientLogoCarousel.jsx
+|   |   |   |-- TeamCard.jsx
+|   |   |   `-- TimelineItem.jsx
+|   |   |-- contact/
+|   |   |   |-- ContactForm.jsx
+|   |   |   |-- ContactPage.jsx
+|   |   |   `-- WhatsappButton.jsx
+|   |   |-- estimator/
+|   |   |   |-- PriceEstimatorModal.jsx
+|   |   |   `-- ShareButtons.jsx
+|   |   `-- service/
+|   |       |-- ServiceContent.jsx
+|   |       |-- ServiceDetail.jsx
+|   |       |-- ServiceDocuments.jsx
+|   |       |-- ServiceHero.jsx
+|   |       |-- ServiceProcess.jsx
+|   |       `-- ServiceSidebar.jsx
+|   |-- hooks/
+|   |   |-- usePriceEstimator.js
+|   |   |-- useScrollToTop.js
+|   |   |-- useStore.js
+|   |   `-- useToast.js
+|   |-- lib/
+|   |   |-- ai.js
+|   |   |-- chatbotResponses.js
+|   |   |-- constants.js
+|   |   |-- data.js
+|   |   |-- iconMap.js
+|   |   `-- priceRules.js
+|   |-- main.jsx
+|   |-- pages/
+|   |   |-- About.jsx
+|   |   |-- Contact.jsx
+|   |   |-- Dashboard.jsx
+|   |   |-- Dokumentasi.jsx
+|   |   |-- LandingPage/
+|   |   |   |-- CTASection.jsx
+|   |   |   |-- ChatbotWidget.jsx
+|   |   |   |-- HeroSection.jsx
+|   |   |   |-- ServicePreview.jsx
+|   |   |   |-- TestimonialCarousel.jsx
+|   |   |   `-- index.jsx
+|   |   |-- LandingPage.jsx
+|   |   |-- Login.jsx
+|   |   |-- Portfolio.jsx
+|   |   |-- Register.jsx
+|   |   |-- ServiceDetail.jsx
+|   |   |-- ServiceList.jsx
+|   |   `-- dashboard/
+|   |       |-- ChatbotLogs.jsx
+|   |       |-- DashboardLayout.jsx
+|   |       |-- DashboardOverview.jsx
+|   |       |-- PermitFormModal.jsx
+|   |       |-- PermitList.jsx
+|   |       |-- Sidebar.jsx
+|   |       |-- TopBar.jsx
+|   |       `-- index.jsx
+|   `-- styles/
+|       |-- TestimonialCarousel.css
+|       |-- dark.css
+|       `-- global.css
+|-- struktur.txt
+`-- vite.config.js
+
+20 directories, 96 files

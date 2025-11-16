@@ -6,6 +6,18 @@ import { motion } from "framer-motion";
 import AboutPhoto from "../assets/about-photo.jpg";
 import ChatbotWidget from "./LandingPage/ChatbotWidget";
 
+// === TeamCard ===
+import TeamCard from "../components/about/TeamCard";
+
+// === Import foto tim ===
+import p1 from "../assets/team/person1.png";
+import p2 from "../assets/team/person2.png";
+import p3 from "../assets/team/person3.png";
+import p4 from "../assets/team/person4.png";
+import p5 from "../assets/team/person5.png";
+import p6 from "../assets/team/person6.png";
+import p7 from "../assets/team/person7.png";
+
 // Timeline reusable item
 function TimelineItem({ icon: Icon, title, desc }) {
   return (
@@ -29,11 +41,7 @@ function TimelineItem({ icon: Icon, title, desc }) {
           boxShadow: "0 0 12px rgba(0, 191, 166, 0.2)",
         }}
       >
-        <Icon
-          size={28}
-          className="service-icon"
-          // small highlight effect
-        />
+        <Icon size={28} className="service-icon" />
       </div>
 
       <div>
@@ -44,7 +52,6 @@ function TimelineItem({ icon: Icon, title, desc }) {
   );
 }
 
-// Simple client logo carousel (auto-scroll)
 function ClientLogoCarousel() {
   const logos = [
     "/assets/clients/client1.png",
@@ -83,6 +90,21 @@ function ClientLogoCarousel() {
 }
 
 function About() {
+  // 3 Row sesuai permintaan
+  const row1 = [
+    { photo: p1, name: "Retna Candra N.", role: "AI Engineer" },
+    { photo: p2, name: "Aura Putri L.", role: "AI Engineer" },
+    { photo: p3, name: "Intanalina Nabilah L.", role: "AI Engineer" },
+    { photo: p4, name: "Prida Adis R.", role: "AI Engineer" },
+  ];
+
+  const row2 = [
+    { photo: p5, name: "Mochamad Rizki", role: "Software Architect" },
+    { photo: p6, name: "John Timotius S.", role: "Software Engineer" },
+  ];
+
+  const row3 = [{ photo: p7, name: "Rafi Ahnaf F.", role: "AI Engineer" }];
+
   return (
     <Layout>
       <MotionWrapper>
@@ -96,6 +118,7 @@ function About() {
               Penyedia jasa perizinan lingkungan terpercaya untuk bisnis di
               seluruh Indonesia.
             </p>
+
             {/* About Photo Section */}
             <div className="text-center my-4">
               <img
@@ -136,6 +159,56 @@ function About() {
             />
           </section>
 
+          {/* TEAM SECTION */}
+          <section className="mt-5 mb-5 text-center">
+            <h3 className="fw-semibold service-title-section">Tim Kami</h3>
+
+            {/* ROW 1 – 4 orang */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "40px",
+                marginTop: "35px",
+                flexWrap: "wrap",
+              }}
+            >
+              {row1.map((m, i) => (
+                <TeamCard key={i} photo={m.photo} name={m.name} role={m.role} />
+              ))}
+            </div>
+
+            {/* ROW 2 – 2 orang */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "50px",
+                marginTop: "45px",
+                flexWrap: "wrap",
+              }}
+            >
+              {row2.map((m, i) => (
+                <TeamCard key={i} photo={m.photo} name={m.name} role={m.role} />
+              ))}
+            </div>
+
+            {/* ROW 3 – 1 orang */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "50px",
+              }}
+            >
+              <TeamCard
+                photo={row3[0].photo}
+                name={row3[0].name}
+                role={row3[0].role}
+              />
+            </div>
+          </section>
+
           {/* Client Section */}
           <section className="mt-5 text-center">
             <h3 className="fw-semibold service-title-section-client">
@@ -145,6 +218,7 @@ function About() {
           </section>
         </div>
       </MotionWrapper>
+
       <ChatbotWidget />
     </Layout>
   );

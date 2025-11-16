@@ -689,3 +689,127 @@ body.dark-mode table.table tbody tr:hover {
 input::placeholder {
   color: gray !important;
 }
+
+/* Mega Menu Styling */
+.dropdown-menu {
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+
+.dropdown-menu .dropdown-item {
+  padding: 8px 0;
+  font-size: 0.95rem;
+}
+
+.dropdown-menu h6 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+body.dark-mode .dropdown-menu {
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .dropdown-menu h6 {
+  color: #00ffe5;
+}
+
+/* Remove blue click highlight and apply custom theme */
+
+.dropdown-item:hover {
+  background-color: #00bfa6 !important; /* warna toska */
+  color: white !important;
+}
+
+body.dark-mode .drop-down-item {
+  color: #ddd !important;
+}
+
+.dropdown-item:active,
+.dropdown-item:focus {
+  background-color: #00bfa6 !important; /* warna toska */
+  color: white !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ======================
+   TEAM SECTION STYLES
+   ====================== */
+
+/* Card wrapper */
+.team-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.25s ease;
+}
+
+/* Photo wrapper */
+.team-photo-wrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 9999px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Photo */
+.team-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hover glow */
+.team-photo-wrapper:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 22px rgba(0, 255, 255, 0.55);
+}
+
+/* Overlay hybrid glass + glow */
+.team-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.25s ease;
+  border-radius: 9999px;
+}
+
+/* Hover overlay show */
+.team-photo-wrapper:hover .team-photo-overlay {
+  opacity: 1;
+}
+
+/* Overlay text */
+.overlay-content {
+  text-align: center;
+}
+
+.team-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+}
+
+.team-role {
+  font-size: 0.85rem;
+  margin-top: 4px;
+  color: #c7faff;
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .team-photo-wrapper {
+    width: 140px;
+    height: 140px;
+  }
+}
