@@ -41,10 +41,32 @@
 |   |   |   |-- client7.png
 |   |   |   `-- desktop.ini
 |   |   |-- dokumentasi/
-|   |   |   |-- IMG-20251027-WA0067.jpg
-|   |   |   |-- IMG-20251027-WA0076.jpg
+|   |   |   |-- doc-video.mp4
 |   |   |   |-- doc1.jpg
-|   |   |   `-- doc2.jpg
+|   |   |   |-- doc10.jpg
+|   |   |   |-- doc11.jpg
+|   |   |   |-- doc12.jpg
+|   |   |   |-- doc13.jpg
+|   |   |   |-- doc14.jpg
+|   |   |   |-- doc15.jpg
+|   |   |   |-- doc16.jpg
+|   |   |   |-- doc17.jpg
+|   |   |   |-- doc18.jpg
+|   |   |   |-- doc19.jpg
+|   |   |   |-- doc2.jpg
+|   |   |   |-- doc20.jpg
+|   |   |   |-- doc21.jpg
+|   |   |   |-- doc22.jpg
+|   |   |   |-- doc23.jpg
+|   |   |   |-- doc24.jpg
+|   |   |   |-- doc25.jpg
+|   |   |   |-- doc3.jpg
+|   |   |   |-- doc4.jpg
+|   |   |   |-- doc5.jpg
+|   |   |   |-- doc6.jpg
+|   |   |   |-- doc7.jpg
+|   |   |   |-- doc8.jpg
+|   |   |   `-- doc9.jpg
 |   |   |-- hero-bg.mp4
 |   |   |-- icons/
 |   |   |-- portfolio/
@@ -110,6 +132,7 @@
 |   |   |-- chatbotResponses.js
 |   |   |-- constants.js
 |   |   |-- data.js
+|   |   |-- dokumentasiData.js
 |   |   |-- embedParser.js
 |   |   |-- iconMap.js
 |   |   |-- portfolioData.js
@@ -144,11 +167,13 @@
 |   |       `-- index.jsx
 |   |-- styles/
 |   |   |-- TestimonialCarousel.css
+|   |   |-- animations.css
 |   |   |-- dark.css
+|   |   |-- dokumentasi.css
 |   |   `-- global.css
 |   `-- utils/
 |       `-- getTiktokEmbedUrl.js
 |-- struktur.txt
 `-- vite.config.js
 
-24 directories, 127 files
+24 directories, 152 files

@@ -1,22 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import Layout from "../components/Layout";
 import MotionWrapper from "../components/MotionWrapper";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import ChatbotWidget from "./LandingPage/ChatbotWidget";
+import emailjs from "emailjs-com";
+import { toast } from "react-toastify";
 
-/**
- * Contact page - premium version matching global.css
- * - glass cards (service-card)
- * - icon glow uses .service-icon from global.css
- * - buttons use .btn-toska
- * - toast uses bootstrap toast markup (position fixed)
- *
- * Replace PHONE_NUMBER and EMAIL with real values.
- */
-
-const PHONE_NUMBER = "+6281315816277"; // replace with real admin number
+const PHONE_NUMBER = "+6281315816277";
 const EMAIL = "info@geomandiri.co.id";
 
 function ContactCard({ Icon, title, children }) {
@@ -60,6 +52,7 @@ function WhatsAppCTA() {
   )}?text=${encodeURIComponent(
     "Halo Geo Mandiri Kreasi, saya ingin konsultasi perizinan lingkungan."
   )}`;
+
   return (
     <a
       href={wa}
@@ -74,7 +67,6 @@ function WhatsAppCTA() {
 }
 
 export default function Contact() {
-  // form
   const {
     register,
     handleSubmit,
@@ -82,19 +74,26 @@ export default function Contact() {
     reset,
   } = useForm();
 
-  const [showToast, setShowToast] = useState(false);
-
   async function onSubmit(data) {
-    // simulate network call (replace with real api later)
     try {
-      await new Promise((r) => setTimeout(r, 700));
-      setShowToast(true);
+      console.log(" ini env nya -> ", import.meta.env.VITE_EMAILJS_SERVICE_ID);
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: data.name,
+          reply_to: data.email,
+          phone: data.phone || "-",
+          message: data.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      toast.success("Pesan berhasil dikirim!");
       reset();
-      setTimeout(() => setShowToast(false), 3000);
-      // optionally: send data to backend here
-      console.log("contact submitted", data);
     } catch (err) {
       console.error(err);
+      toast.error("Gagal mengirim pesan. Coba lagi nanti.");
     }
   }
 
@@ -102,7 +101,6 @@ export default function Contact() {
     <Layout>
       <MotionWrapper>
         <div className="container py-5" style={{ marginTop: 70 }}>
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -117,7 +115,6 @@ export default function Contact() {
             </p>
           </motion.div>
 
-          {/* Contact cards */}
           <div className="row g-3 mb-4">
             <div className="col-12 col-md-4">
               <ContactCard Icon={MapPin} title="Alamat">
@@ -152,7 +149,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Form + Map */}
           <div className="row g-4 align-items-stretch">
             <div className="col-12 col-lg-6">
               <motion.div
@@ -206,9 +202,7 @@ export default function Contact() {
                   <div className="mb-3">
                     <label className="form-label">Nomor HP</label>
                     <input
-                      className={`form-control ${
-                        errors.phone ? "is-invalid" : ""
-                      }`}
+                      className="form-control"
                       {...register("phone")}
                       placeholder="+628..."
                     />
@@ -276,38 +270,17 @@ export default function Contact() {
                 <div className="ratio ratio-16x9">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d63457.97930801433!2d106.906767!3d-6.247425000000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f32b83252e77%3A0xd4495dbdb34e3f71!2sGeo%20Mandiri%20Kreasi.%20PT!5e0!3m2!1sid!2sus!4v1763198031494!5m2!1sid!2sus"
-                    allowfullScreen=""
+                    allowFullScreen=""
                     loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
+                    referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
                 </div>
               </motion.div>
             </div>
           </div>
-
-          {/* toast */}
-          <div style={{ position: "fixed", right: 20, top: 80, zIndex: 99999 }}>
-            <div
-              className={`toast show ${showToast ? "" : "d-none"}`}
-              role="alert"
-            >
-              <div className="toast-header">
-                <strong className="me-auto">Geo Mandiri</strong>
-                <small>baru saja</small>
-                <button
-                  type="button"
-                  className="btn-close"
-                  aria-label="Close"
-                  onClick={() => setShowToast(false)}
-                ></button>
-              </div>
-              <div className="toast-body">
-                Pesan berhasil dikirim. Tim kami akan menghubungi Anda.
-              </div>
-            </div>
-          </div>
         </div>
       </MotionWrapper>
+
       <ChatbotWidget />
     </Layout>
   );

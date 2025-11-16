@@ -30,8 +30,8 @@ function App() {
     <>
       {/* GLOBAL TOAST (WAJIB ADA DI SINI) */}
       <ToastContainer
-        position="top-right"
-        autoClose={500}
+        position="bottom-right"
+        autoClose={4000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
