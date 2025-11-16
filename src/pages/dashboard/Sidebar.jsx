@@ -8,10 +8,16 @@ export default function Sidebar({ collapsed, setCollapsed }) {
   const logout = useStore((s) => s.logout);
   const navigate = useNavigate();
 
-  // Handle logout then redirect
   const handleLogout = () => {
+    // clear Zustand user
     logout();
-    navigate("/login"); // redirect after logout
+
+    // clear backup localStorage user
+    localStorage.removeItem("loggedInUser");
+
+    // Redirect to login
+    navigate("/login", { replace: true });
+    // replace: true → user nggak bisa back ke dashboard
   };
 
   return (
@@ -19,7 +25,6 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       className="d-flex flex-column position-fixed h-100 shadow-sm"
       style={{
         width: collapsed ? 80 : 250,
-        // background: "#ffffff",
         borderRight: "1px solid rgba(0,0,0,0.06)",
         transition: "width 0.25s ease",
         zIndex: 1030,
@@ -113,7 +118,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
         </ul>
       </nav>
 
-      {/* FOOTER: LOGOUT ONLY */}
+      {/* LOGOUT */}
       <div className="p-3 border-top">
         <button
           className="btn btn-outline-danger btn-sm w-100 d-flex align-items-center justify-content-center gap-2"

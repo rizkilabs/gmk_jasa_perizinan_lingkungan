@@ -1,14 +1,22 @@
 // src/pages/Login.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import MotionWrapper from "../components/MotionWrapper";
 import Navbar from "../components/Navbar";
+import { useStore } from "../hooks/useStore";
 
 export default function Login() {
   const navigate = useNavigate();
   const [identifier, setIdentifier] = useState(""); // email or phone
   const [password, setPassword] = useState("");
+  const loginStore = useStore((s) => s.login);
+  const userLoggedIn = useStore((s) => s.userLoggedIn);
+
+  useEffect(() => {
+    // If already logged in, go to dashboard
+    if (userLoggedIn) navigate("/dashboard");
+  }, [userLoggedIn, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,17 +54,27 @@ export default function Login() {
       return;
     }
 
-    // login success
-    localStorage.setItem(
-      "loggedInUser",
-      JSON.stringify({ id: user.id, name: user.name, email: user.email })
-    );
+    // login success: include role when saving
+    const logged = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role || "user",
+    };
+
+    // Save to localStorage (for compatibility)
+    localStorage.setItem("loggedInUser", JSON.stringify(logged));
+
+    // update zustand store
+    loginStore(logged);
+
     toast.success("Login berhasil! Mengarahkan ke dashboard...", {
       position: "top-center",
-      autoClose: 1600,
+      autoClose: 1200,
     });
 
-    setTimeout(() => navigate("/dashboard"), 1700);
+    // navigate immediately (no long timeout)
+    setTimeout(() => navigate("/dashboard"), 700);
   };
 
   return (

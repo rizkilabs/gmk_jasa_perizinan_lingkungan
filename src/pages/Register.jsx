@@ -22,7 +22,7 @@ export default function Register() {
   // simple email regex
   const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  // Indonesian phone validation: starts with 08... or +62...
+  // Indonesian phone validation
   const isPhoneValid = (phone) => /^(08\d{7,12}|\+62\d{7,12})$/.test(phone);
 
   const handleSubmit = (e) => {
@@ -61,10 +61,10 @@ export default function Register() {
       return;
     }
 
-    // load users array
+    // load users
     const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-    // check duplicate by email or phone (case-insensitive on email)
+    // check duplicate
     const dup = users.find(
       (u) =>
         u.email.toLowerCase() === form.email.toLowerCase() ||
@@ -79,16 +79,18 @@ export default function Register() {
       return;
     }
 
-    // create new user object
+    // create new user with default role "user"
     const newUser = {
       id: `u_${Date.now()}`,
       name: form.name.trim(),
       email: form.email.trim().toLowerCase(),
       phone: form.phone.trim(),
       businessName: form.businessName.trim() || "",
-      password: form.password, // plain text for demo only
+      password: form.password, // only demo
+      role: "user", // <-- default role
     };
 
+    // save user list
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
 
@@ -97,8 +99,7 @@ export default function Register() {
       autoClose: 4000,
     });
 
-    // redirect after toast shown
-    setTimeout(() => navigate("/login"), 1900);
+    setTimeout(() => navigate("/login"), 1800);
   };
 
   return (
