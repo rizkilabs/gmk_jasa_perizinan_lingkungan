@@ -315,7 +315,6 @@ body.dark-mode .carousel-control-next-icon {
 /* 🟩 Tosca Button Style */
 .btn-toska {
   background-color: var(--primary);
-  color: white;
   border: none;
   transition: all 0.3s;
 }
@@ -576,7 +575,7 @@ body.dark-mode .login-glass-card {
 
 .login-title {
   font-weight: 600;
-  color: var(--dark);
+  color: var(--primary);
 }
 
 body.dark-mode .login-title {

@@ -276,7 +276,7 @@ export default function Contact() {
                 <div className="ratio ratio-16x9">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d63457.97930801433!2d106.906767!3d-6.247425000000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f32b83252e77%3A0xd4495dbdb34e3f71!2sGeo%20Mandiri%20Kreasi.%20PT!5e0!3m2!1sid!2sus!4v1763198031494!5m2!1sid!2sus"
-                    allowfullscreen=""
+                    allowfullScreen=""
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
                   ></iframe>

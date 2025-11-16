@@ -1,0 +1,160 @@
+/* ============================
+   GLOBAL SPACING VARIABLES
+   ============================ */
+:root {
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+
+  --max-width: 1200px;
+}
+
+/* ============================
+   WRAPPER
+   ============================ */
+.dok-wrapper {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* ============================
+   VIDEO AREA
+   ============================ */
+.video-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.video-box video {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  background: #000;
+}
+
+/* ============================
+   FOTO GRID
+   ============================ */
+.gallery-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-md);
+  padding: 0 var(--space-sm);
+}
+
+/* Card foto */
+.gallery-card {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================
+   BUTTON "LIHAT LEBIH BANYAK"
+   ============================ */
+.gallery-toggle-btn {
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 12px 24px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+body.dark-mode .gallery-toggle-btn {
+  color: white;
+}
+
+.gallery-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: scale(1.03);
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+@media (max-width: 768px) {
+  .dok-wrapper {
+    padding: var(--space-md) var(--space-sm);
+    gap: var(--space-lg);
+  }
+
+  .gallery-grid {
+    gap: var(--space-sm);
+    padding: 0 var(--space-xs);
+  }
+
+  .gallery-card {
+    border-radius: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+/* Spacing after navbar */
+.dok-top-space {
+  margin-top: 80px;
+}
+
+@media (max-width: 768px) {
+  .dok-top-space {
+    margin-top: 32px;
+  }
+}
+
+/* ============================
+   STAGGER ANIMATION
+   ============================ */
+
+.stagger-item {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 0.45s ease forwards;
+  animation-delay: calc(var(--i) * 0.25s);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -15,7 +15,16 @@
 |   |   |   |-- client6.png
 |   |   |   `-- client7.png
 |   |   |-- desktop.ini
-|   |   `-- hero-bg.mp4
+|   |   |-- hero-bg.mp4
+|   |   |-- instagram_1.jpg
+|   |   |-- instagram_2.jpg
+|   |   |-- instagram_3.jpg
+|   |   |-- tiktok_1.jpg
+|   |   |-- tiktok_2.jpg
+|   |   |-- tiktok_3.jpg
+|   |   |-- tiktok_4.jpg
+|   |   |-- tiktok_5.jpg
+|   |   `-- youtube_1.jpg
 |   |-- geomandiri-com.jpg
 |   `-- vite.svg
 |-- src/
@@ -39,10 +48,13 @@
 |   |   |-- hero-bg.mp4
 |   |   |-- icons/
 |   |   |-- portfolio/
-|   |   |   |-- IMG-20251027-WA0066.jpg
-|   |   |   |-- portfolio1.jpg
-|   |   |   |-- portfolio2.jpg
-|   |   |   |-- portfolio3.jpg
+|   |   |   |-- portfolio_1.jpg
+|   |   |   |-- portfolio_2.jpg
+|   |   |   |-- portfolio_3.jpg
+|   |   |   |-- portfolio_4.jpg
+|   |   |   |-- portfolio_5.jpg
+|   |   |   |-- portfolio_6.jpg
+|   |   |   |-- portfolio_7.jpg
 |   |   |   `-- posters/
 |   |   |       |-- doc1.jpg
 |   |   |       |-- doc2.jpg
@@ -51,14 +63,15 @@
 |   |   |       |-- doc5.jpg
 |   |   |       |-- doc6.jpg
 |   |   |       `-- doc7.jpg
-|   |   `-- team/
-|   |       |-- person1.png
-|   |       |-- person2.png
-|   |       |-- person3.png
-|   |       |-- person4.png
-|   |       |-- person5.png
-|   |       |-- person6.png
-|   |       `-- person7.png
+|   |   |-- team/
+|   |   |   |-- person1.png
+|   |   |   |-- person2.png
+|   |   |   |-- person3.png
+|   |   |   |-- person4.png
+|   |   |   |-- person5.png
+|   |   |   |-- person6.png
+|   |   |   `-- person7.png
+|   |   `-- thumbnail/
 |   |-- components/
 |   |   |-- Footer.jsx
 |   |   |-- Layout.jsx
@@ -67,6 +80,7 @@
 |   |   |-- Navbar.jsx
 |   |   |-- PrivateRoute.jsx
 |   |   |-- ServiceCard.jsx
+|   |   |-- TiktokEmbed.jsx
 |   |   |-- about/
 |   |   |   |-- AboutPage.jsx
 |   |   |   |-- ClientLogoCarousel.jsx
@@ -96,6 +110,7 @@
 |   |   |-- chatbotResponses.js
 |   |   |-- constants.js
 |   |   |-- data.js
+|   |   |-- embedParser.js
 |   |   |-- iconMap.js
 |   |   |-- portfolioData.js
 |   |   `-- priceRules.js
@@ -127,11 +142,13 @@
 |   |       |-- Sidebar.jsx
 |   |       |-- TopBar.jsx
 |   |       `-- index.jsx
-|   `-- styles/
-|       |-- TestimonialCarousel.css
-|       |-- dark.css
-|       `-- global.css
+|   |-- styles/
+|   |   |-- TestimonialCarousel.css
+|   |   |-- dark.css
+|   |   `-- global.css
+|   `-- utils/
+|       `-- getTiktokEmbedUrl.js
 |-- struktur.txt
 `-- vite.config.js
 
-22 directories, 112 files
+24 directories, 127 files

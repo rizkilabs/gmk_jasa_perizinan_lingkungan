@@ -1,0 +1,248 @@
+/* animations.css
+   Futuristic glassmorphism animations:
+   - blur-morph (soft backdrop morph)
+   - neon edge glow on hover
+   - glass pulse on hover
+   - subtle parallax using CSS vars (--mx, --my, --i)
+   - entrance stagger animation
+*/
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .glass-media-item,
+  .gallery-card,
+  .media-play,
+  .media-placeholder {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* container-level variables (set by JS): --mx and --my range -0.5..0.5 */
+.gallery-grid {
+  --mx: 0;
+  --my: 0;
+  /* 3D perspective helps parallax look natural */
+  perspective: 800px;
+}
+
+/* basic glass item base */
+.gallery-card.glass-media-item {
+  --depth: 18px; /* how much it moves */
+  --i: 0;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  transition: transform 360ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    box-shadow 300ms ease, border-color 300ms ease;
+  opacity: 0;
+  transform: translateY(8px) scale(0.995);
+  border-radius: 16px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  /* compute transform from container vars */
+  transform: translate3d(
+      calc(var(--mx) * var(--depth)),
+      calc(var(--my) * calc(var(--depth) * -1)),
+      0
+    )
+    scale(0.995);
+  /* subtle base glass (in case your dokumentasi.css is different) */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* entrance stagger: uses --i (0,1,2...) set inline from React */
+.gallery-card.glass-media-item.is-visible {
+  animation: gm-enter 520ms cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+  animation-delay: calc(var(--i) * 40ms);
+}
+
+@keyframes gm-enter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0) scale(0.985);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -6px, 0) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* hover/focus interactions */
+.gallery-card.glass-media-item:hover,
+.gallery-card.glass-media-item:focus {
+  transform: translate3d(
+      calc(var(--mx) * var(--depth) * 1.1),
+      calc(var(--my) * calc(var(--depth) * -1.1)),
+      0
+    )
+    scale(1.03);
+  border-color: rgba(0, 191, 166, 0.18);
+  box-shadow: 0 20px 48px rgba(0, 191, 166, 0.12),
+    0 6px 18px rgba(2, 6, 23, 0.14);
+}
+
+/* Neon edge glow using pseudo element */
+.gallery-card.glass-media-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow 280ms ease, opacity 280ms ease;
+  opacity: 0;
+}
+
+/* hover edge glow */
+.gallery-card.glass-media-item:hover::after {
+  opacity: 1;
+  box-shadow: 0 0 28px rgba(0, 191, 166, 0.12),
+    inset 0 0 18px rgba(0, 191, 166, 0.06);
+}
+
+/* glass pulse: subtle expanding overlay */
+.gallery-card.glass-media-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+      800px 300px at 10% 20%,
+      rgba(0, 191, 166, 0.06),
+      transparent 12%
+    ),
+    radial-gradient(
+      400px 200px at 90% 80%,
+      rgba(255, 255, 255, 0.02),
+      transparent 10%
+    );
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 360ms ease, transform 420ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  pointer-events: none;
+}
+
+/* on hover, pulse up */
+.gallery-card.glass-media-item:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* tiny soft blur morph animation (subtle) */
+@keyframes blur-morph {
+  0% {
+    backdrop-filter: blur(6px) saturate(100%);
+  }
+  50% {
+    backdrop-filter: blur(10px) saturate(120%);
+  }
+  100% {
+    backdrop-filter: blur(6px) saturate(100%);
+  }
+}
+
+/* attach blur morph only on larger screens to avoid perf issues on mobile */
+@media (min-width: 992px) {
+  .gallery-card.glass-media-item {
+    animation: blur-morph 6s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 30ms);
+  }
+}
+
+/* image style override to keep cover and 3D depth */
+.gallery-card.glass-media-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform-origin: center center;
+  transition: transform 440ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+/* soft zoom on hover for inner image */
+.gallery-card.glass-media-item:hover img {
+  transform: scale(1.06);
+}
+
+/* media placeholder (video tile) existing look + subtle animation */
+.media-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35));
+}
+
+/* play icon style */
+.media-play {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 10px 26px rgba(0, 191, 166, 0.12));
+  transition: transform 220ms ease;
+}
+
+/* micro bounce on hover */
+.gallery-card.glass-media-item:hover .media-play {
+  transform: scale(1.06) translateY(-2px);
+}
+
+/* small devices: reduce effects for perf */
+@media (max-width: 576px) {
+  .gallery-card.glass-media-item {
+    --depth: 8px;
+    border-radius: 12px;
+  }
+  .media-play {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* accessibility focus states */
+.gallery-card.glass-media-item:focus {
+  outline: 2px solid rgba(0, 191, 166, 0.18);
+  outline-offset: 4px;
+}
+
+/* subtle floating idle animation for all items (very slow) */
+@keyframes floaty {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -4px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* apply float on desktop but keep tiny amplitude */
+@media (min-width: 992px) {
+  .gallery-card.glass-media-item {
+    animation: blur-morph 6s ease-in-out infinite,
+      floaty 8s ease-in-out infinite;
+  }
+}
+
+/* small caption tweak (if you use .media-caption) */
+.media-caption {
+  color: #dffaf3; /* soft toska */
+  font-weight: 600;
+}
