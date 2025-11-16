@@ -38,14 +38,31 @@
 |   |   |   `-- doc2.jpg
 |   |   |-- hero-bg.mp4
 |   |   |-- icons/
-|   |   `-- portfolio/
-|   |       |-- IMG-20251027-WA0066.jpg
-|   |       |-- portfolio1.jpg
-|   |       |-- portfolio2.jpg
-|   |       `-- portfolio3.jpg
+|   |   |-- portfolio/
+|   |   |   |-- IMG-20251027-WA0066.jpg
+|   |   |   |-- portfolio1.jpg
+|   |   |   |-- portfolio2.jpg
+|   |   |   |-- portfolio3.jpg
+|   |   |   `-- posters/
+|   |   |       |-- doc1.jpg
+|   |   |       |-- doc2.jpg
+|   |   |       |-- doc3.jpg
+|   |   |       |-- doc4.jpg
+|   |   |       |-- doc5.jpg
+|   |   |       |-- doc6.jpg
+|   |   |       `-- doc7.jpg
+|   |   `-- team/
+|   |       |-- person1.png
+|   |       |-- person2.png
+|   |       |-- person3.png
+|   |       |-- person4.png
+|   |       |-- person5.png
+|   |       |-- person6.png
+|   |       `-- person7.png
 |   |-- components/
 |   |   |-- Footer.jsx
 |   |   |-- Layout.jsx
+|   |   |-- MediaModal.jsx
 |   |   |-- MotionWrapper.jsx
 |   |   |-- Navbar.jsx
 |   |   |-- PrivateRoute.jsx
@@ -80,6 +97,7 @@
 |   |   |-- constants.js
 |   |   |-- data.js
 |   |   |-- iconMap.js
+|   |   |-- portfolioData.js
 |   |   `-- priceRules.js
 |   |-- main.jsx
 |   |-- pages/
@@ -116,4 +134,4 @@
 |-- struktur.txt
 `-- vite.config.js
 
-20 directories, 96 files
+22 directories, 112 files

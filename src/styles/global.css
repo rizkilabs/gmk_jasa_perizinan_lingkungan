@@ -813,3 +813,326 @@ body.dark-mode .drop-down-item {
     height: 140px;
   }
 }
+
+/* ===== Portfolio Card Tabs (D - floating card style) ===== */
+.portfolio-tabs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.portfolio-tab-card {
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  min-width: 120px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.portfolio-tab-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 191, 166, 0.12);
+}
+
+.portfolio-tab-card.active {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 191, 166, 0.12),
+    rgba(0, 191, 166, 0.06)
+  );
+  border: 1px solid rgba(0, 191, 166, 0.22);
+  box-shadow: 0 14px 40px rgba(0, 191, 166, 0.12);
+  color: var(--primary);
+  text-shadow: 0 0 6px rgba(0, 191, 166, 0.25);
+}
+
+/* dark mode */
+body.dark-mode .portfolio-tab-card {
+  background: rgba(43, 43, 43, 0.6);
+  color: var(--gray);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .portfolio-tab-card.active {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 191, 166, 0.08),
+    rgba(0, 191, 166, 0.03)
+  );
+  color: var(--primary);
+  box-shadow: 0 14px 40px rgba(0, 191, 166, 0.08);
+}
+
+/* responsive adjustments */
+@media (max-width: 576px) {
+  .portfolio-tab-card {
+    min-width: 45%;
+    font-size: 0.95rem;
+  }
+}
+
+/* ===== Portfolio: Glass Media Grid (style D) ===== */
+
+/* container card (consistent with service-card / glass vibe) */
+.portfolio-card {
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(11, 11, 11, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+/* adapt for dark mode (subtle) */
+body.dark-mode .portfolio-card {
+  background: rgba(43, 43, 43, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* the actual media grid: auto-fit responsive */
+.glass-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+/* each media item = glass card */
+.glass-media-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 160px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 26px rgba(2, 6, 23, 0.06);
+  transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1),
+    box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+/* item content (image/video) */
+.glass-media-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* play placeholder for videos (dark rectangle with play icon) */
+.media-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* play icon */
+.media-play {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 30px rgba(0, 191, 166, 0.12);
+  transition: transform 0.18s ease;
+}
+
+.media-play svg {
+  transform: translateX(4px);
+  fill: var(--primary);
+}
+
+/* hover effects: lift + glow + border toska */
+.glass-media-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0, 191, 166, 0.12);
+  border: 1px solid rgba(0, 191, 166, 0.18);
+}
+
+/* active tab card glow (already exists in global.css but we emphasise) */
+.portfolio-tab-card.active {
+  box-shadow: 0 16px 48px rgba(0, 191, 166, 0.12);
+}
+
+/* captions under media */
+.media-caption {
+  margin-top: 10px;
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 0.95rem;
+}
+
+/* dark mode tweaks */
+body.dark-mode .glass-media-item {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+body.dark-mode .media-caption {
+  color: var(--gray);
+}
+
+/* responsive adjustments */
+@media (max-width: 576px) {
+  .media-play {
+    width: 54px;
+    height: 54px;
+  }
+  .glass-media-item {
+    min-height: 140px;
+  }
+}
+
+/* ===== Media Modal (slide-up bottom-sheet on mobile, centered card on desktop) ===== */
+
+/* backdrop */
+.media-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: end; /* mobile -> bottom sheet */
+  z-index: 99999; /* above navbar (which lu set 9999) */
+  background: rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* panel (the animated card) */
+.media-modal-panel {
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 14px 14px 0 0; /* bottom-sheet look on mobile */
+  /* background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(250, 250, 250, 0.98)
+  ); */
+  box-shadow: 0 18px 50px rgba(2, 6, 23, 0.3);
+  margin: 0;
+  padding: 12px;
+  transform-origin: bottom center;
+}
+
+/* the content wrapper */
+.media-modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+/* header (close button right) */
+.media-modal-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 6px 4px;
+}
+
+/* close btn */
+.media-modal-panel .close-btn {
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  color: #222;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 0.18s ease;
+}
+
+.media-modal-panel .close-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* body with aspect ratio for iframe and player */
+.media-modal-body {
+  padding: 6px 12px 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* responsive ratio wrapper so iframe / player keep aspect ratio */
+.iframe-ratio {
+  width: 100%;
+  height: calc(70vh - 56px); /* subtract header area so total fits */
+  max-height: 720px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+}
+
+/* ensure iframe fills wrapper */
+.iframe-ratio iframe,
+.iframe-ratio video,
+.iframe-ratio .react-player {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* image fullscreen behavior */
+.modal-media-img {
+  width: 100%;
+  max-height: calc(70vh - 56px);
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Desktop: center modal, card style */
+@media (min-width: 992px) {
+  .media-modal-backdrop {
+    place-items: center; /* center the modal */
+  }
+
+  .media-modal-panel {
+    border-radius: 12px;
+    width: 90%;
+    max-width: 1000px;
+    padding: 16px;
+  }
+
+  .media-modal-wrapper {
+    max-height: 80vh;
+  }
+
+  .iframe-ratio {
+    height: calc(72vh - 96px);
+    max-height: 720px;
+  }
+}
+
+/* Mobile minor tweak: make the bottom-sheet a bit shorter */
+@media (max-width: 576px) {
+  .media-modal-panel {
+    border-radius: 12px 12px 0 0;
+    padding-bottom: 18px;
+  }
+
+  .iframe-ratio {
+    height: calc(55vh - 56px);
+  }
+}
