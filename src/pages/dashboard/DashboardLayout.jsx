@@ -38,7 +38,7 @@ export default function DashboardLayout() {
         }}
       >
         {/* Topbar */}
-        <Topbar setCollapsed={setCollapsed} />
+        <TopB ar setCollapsed={setCollapsed} />
 
         {/* Page Content */}
         <main

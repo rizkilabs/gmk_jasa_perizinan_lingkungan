@@ -129,6 +129,8 @@ function About() {
                   maxWidth: "550px",
                   borderRadius: "20px",
                   boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+                  display: "block",
+                  margin: "0 auto",
                 }}
               />
             </div>
