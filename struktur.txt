@@ -26,6 +26,8 @@
 |   |   |-- tiktok_5.jpg
 |   |   `-- youtube_1.jpg
 |   |-- geomandiri-com.jpg
+|   |-- music/
+|   |   `-- background.mp3
 |   `-- vite.svg
 |-- src/
 |   |-- App.jsx
@@ -95,10 +97,12 @@
 |   |   |   `-- person7.png
 |   |   `-- thumbnail/
 |   |-- components/
+|   |   |-- AdminRoute.jsx
 |   |   |-- Footer.jsx
 |   |   |-- Layout.jsx
 |   |   |-- MediaModal.jsx
 |   |   |-- MotionWrapper.jsx
+|   |   |-- MusicPlayer.jsx
 |   |   |-- Navbar.jsx
 |   |   |-- PrivateRoute.jsx
 |   |   |-- ServiceCard.jsx
@@ -161,6 +165,7 @@
 |   |       |-- ChatbotLogs.jsx
 |   |       |-- DashboardLayout.jsx
 |   |       |-- DashboardOverview.jsx
+|   |       |-- EditContent.jsx
 |   |       |-- PermitCardItem.jsx
 |   |       |-- PermitFormModal.jsx
 |   |       |-- PermitList.jsx
@@ -178,4 +183,4 @@
 |-- struktur.txt
 `-- vite.config.js
 
-24 directories, 154 files
+25 directories, 158 files

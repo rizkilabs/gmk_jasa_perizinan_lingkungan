@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Portfolio from "./pages/Portfolio";
 import Dokumentasi from "./pages/Dokumentasi";
 import EditContent from "./pages/dashboard/EditContent"; // ADD THIS
+import MusicPlayer from "./components/MusicPlayer";
 
 function App() {
   const theme = useStore((s) => s.theme);
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <>
+      <MusicPlayer />
       {/* GLOBAL TOAST (WAJIB ADA DI SINI) */}
       <ToastContainer
         position="bottom-right"

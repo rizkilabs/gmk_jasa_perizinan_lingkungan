@@ -75,7 +75,15 @@ const MediaModalContent = ({ onClose, type, src }) => {
 
             {isYouTube && (
               <div className="iframe-ratio">
-                <ReactPlayer url={embed} width="100%" height="100%" controls />
+                <iframe
+                  src={embed}
+                  title="Embedded media"
+                  allow="autoplay; encrypted-media; fullscreen"
+                  allowFullScreen
+                  sandbox="allow-same-origin allow-scripts allow-popups"
+                  loading="lazy"
+                  frameBorder="0"
+                />
               </div>
             )}
 

@@ -65,14 +65,14 @@ export const youtubeVideos = [
   {
     type: "youtube",
     title: "YouTube Video 1",
-    url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    thumbnail: "/assets/yt1.jpg",
+    url: "https://www.youtube.com/embed/_egE6sC8MmM?si=eNPPUL4oBOSEURPB",
+    thumbnail: "/assets/youtube_1.jpg",
   },
   {
     type: "youtube",
     title: "YouTube Video 2",
-    url: "https://www.youtube.com/embed/3JZ_D3ELwOQ",
-    thumbnail: "/assets/yt2.jpg",
+    url: "https://www.youtube.com/embed/YdefNQ6oSSM?si=cfuPR7Venqdd2cgh",
+    thumbnail: "/assets/youtube_2.jpg",
   },
 ];
 
