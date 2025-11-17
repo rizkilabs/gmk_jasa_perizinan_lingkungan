@@ -118,9 +118,6 @@ export default function PermitFormModal({
             >
               <option>Draft</option>
               <option>Submitted</option>
-              <option>In Review</option>
-              <option>Approved</option>
-              <option>Rejected</option>
             </select>
           </div>
 
