@@ -36,3 +36,116 @@ body.dark-mode .table tbody tr:hover > * {
 body.dark-mode .table tbody td.text-center {
   color: #ccc !important;
 }
+
+/* Add these to src/styles/dark.css */
+
+/* Container for mobile cards */
+.permit-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 14px;
+}
+
+/* Card base - glassmorphism look */
+.permit-card {
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 200ms ease, box-shadow 200ms ease,
+    border-color 200ms ease;
+  overflow: hidden;
+}
+
+/* header row: title + status */
+.permit-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.permit-card-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* status pill */
+.permit-status {
+  font-size: 0.75rem;
+  padding: 6px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 0.2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+/* status colors (adjust as needed for dark theme) */
+.permit-status-approved {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+}
+.permit-status-rejected {
+  background: rgba(249, 115, 22, 0.08);
+  color: #f97316;
+}
+.permit-status-pending {
+  background: rgba(59, 130, 246, 0.06);
+  color: #3b82f6;
+}
+.permit-status-unknown {
+  background: rgba(255, 255, 255, 0.02);
+  color: #cbd5e1;
+}
+
+/* body rows */
+.permit-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.92rem;
+}
+
+.permit-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* actions */
+.permit-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+/* hover "glow" using box shadow and faint border color change */
+.permit-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 30px rgba(3, 7, 18, 0.6);
+}
+
+/* small muted text class if your project doesn't have it */
+.muted {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* small screens ensure full width and comfortable padding */
+@media (max-width: 640px) {
+  .permit-card {
+    width: 100%;
+  }
+}

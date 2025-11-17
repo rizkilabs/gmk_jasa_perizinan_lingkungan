@@ -3,13 +3,19 @@ import React, { useState } from "react";
 import { useStore } from "../../hooks/useStore";
 import PermitFormModal from "./PermitFormModal";
 import { Edit, Trash2, Check, X } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import useIsMobile from "../../hooks/useIsMobile";
+import PermitCardItem from "./PermitCardItem";
 import "../../styles/dark.css";
 
 /**
  * PermitList shows permits and action buttons.
  * - Users can create/edit/delete their own permits.
  * - Admins can Approve/Reject (cannot edit/delete).
+ *
+ * This version supports hybrid responsive:
+ * - Mobile (<=640px): card list (PermitCardItem)
+ * - Tablet/Desktop: classic table
  */
 export default function PermitList() {
   const permits = useStore((s) => s.permits);
@@ -31,7 +37,6 @@ export default function PermitList() {
   };
 
   const canEdit = (p) => {
-    // owner can edit; admin cannot
     return user && user.role !== "admin" && p.ownerId === user.id;
   };
 
@@ -40,6 +45,8 @@ export default function PermitList() {
   };
 
   const isAdmin = user && user.role === "admin";
+
+  const isMobile = useIsMobile(640);
 
   return (
     <div>
@@ -55,83 +62,114 @@ export default function PermitList() {
       </div>
 
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        <div className="table-responsive">
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Company</th>
-                <th>Status</th>
-                <th>Created</th>
-                <th style={{ width: 220 }}>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
+        {/* Mobile: card list */}
+        {isMobile ? (
+          <div className="permit-card-list">
+            <AnimatePresence>
               {permits.length === 0 && (
-                <tr>
-                  <td colSpan="5" className="text-center">
-                    No permits yet.
-                  </td>
-                </tr>
+                <motion.div
+                  key="empty"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-center muted"
+                >
+                  No permits yet.
+                </motion.div>
               )}
+
               {permits.map((p) => (
-                <tr key={p.id}>
-                  <td>{p.title}</td>
-                  <td>{p.company}</td>
-                  <td>{p.status}</td>
-                  <td>{new Date(p.createdAt).toLocaleString()}</td>
-                  <td>
-                    {/* User actions: Edit / Delete (only if owner and not admin) */}
-                    {canEdit(p) && (
-                      <button
-                        className="btn btn-sm btn-outline-primary me-2"
-                        onClick={() => openEdit(p)}
-                      >
-                        <Edit size={14} /> Edit
-                      </button>
-                    )}
-
-                    {canDelete(p) && (
-                      <button
-                        className="btn btn-sm btn-outline-danger me-2"
-                        onClick={() => {
-                          if (window.confirm("Hapus permit ini?"))
-                            deletePermit(p.id);
-                        }}
-                      >
-                        <Trash2 size={14} /> Delete
-                      </button>
-                    )}
-
-                    {/* Admin actions: Approve / Reject */}
-                    {isAdmin && (
-                      <>
-                        <button
-                          className="btn btn-sm btn-outline-success me-2"
-                          onClick={() => {
-                            if (window.confirm("Setujui permit ini?"))
-                              approvePermit(p.id);
-                          }}
-                        >
-                          <Check size={14} /> Approve
-                        </button>
-                        <button
-                          className="btn btn-sm btn-outline-warning"
-                          onClick={() => {
-                            if (window.confirm("Tolak permit ini?"))
-                              rejectPermit(p.id);
-                          }}
-                        >
-                          <X size={14} /> Reject
-                        </button>
-                      </>
-                    )}
-                  </td>
-                </tr>
+                <PermitCardItem
+                  key={p.id}
+                  permit={p}
+                  onEdit={openEdit}
+                  onDelete={deletePermit}
+                  onApprove={approvePermit}
+                  onReject={rejectPermit}
+                  canEdit={canEdit(p)}
+                  canDelete={canDelete(p)}
+                  isAdmin={isAdmin}
+                />
               ))}
-            </tbody>
-          </table>
-        </div>
+            </AnimatePresence>
+          </div>
+        ) : (
+          // Desktop / Tablet: table view
+          <div className="table-responsive">
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Company</th>
+                  <th>Status</th>
+                  <th>Created</th>
+                  <th style={{ width: 260 }}>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {permits.length === 0 && (
+                  <tr>
+                    <td colSpan="5" className="text-center">
+                      No permits yet.
+                    </td>
+                  </tr>
+                )}
+                {permits.map((p) => (
+                  <tr key={p.id}>
+                    <td>{p.title}</td>
+                    <td>{p.company}</td>
+                    <td>{p.status}</td>
+                    <td>{new Date(p.createdAt).toLocaleString()}</td>
+                    <td>
+                      {canEdit(p) && (
+                        <button
+                          className="btn btn-sm btn-outline-primary me-2"
+                          onClick={() => openEdit(p)}
+                        >
+                          <Edit size={14} /> Edit
+                        </button>
+                      )}
+
+                      {canDelete(p) && (
+                        <button
+                          className="btn btn-sm btn-outline-danger me-2"
+                          onClick={() => {
+                            if (window.confirm("Hapus permit ini?"))
+                              deletePermit(p.id);
+                          }}
+                        >
+                          <Trash2 size={14} /> Delete
+                        </button>
+                      )}
+
+                      {isAdmin && (
+                        <>
+                          <button
+                            className="btn btn-sm btn-outline-success me-2"
+                            onClick={() => {
+                              if (window.confirm("Setujui permit ini?"))
+                                approvePermit(p.id);
+                            }}
+                          >
+                            <Check size={14} /> Approve
+                          </button>
+                          <button
+                            className="btn btn-sm btn-outline-warning"
+                            onClick={() => {
+                              if (window.confirm("Tolak permit ini?"))
+                                rejectPermit(p.id);
+                            }}
+                          >
+                            <X size={14} /> Reject
+                          </button>
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </motion.div>
 
       <PermitFormModal
