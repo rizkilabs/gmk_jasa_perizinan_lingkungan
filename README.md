@@ -1,16 +1,86 @@
-# React + Vite
+# **PT. Geo Mandiri Kreasi — Website Jasa Perizinan Lingkungan**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website ini dikembangkan sebagai platform informasi dan layanan untuk kebutuhan **Jasa Perizinan Lingkungan**, termasuk konsultasi, pengurusan dokumen, serta penyediaan informasi terkait layanan perusahaan.
 
-Currently, two official plugins are available:
+Tujuan utama pengembangan:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Menyediakan informasi layanan secara terstruktur.
+- Mempermudah calon klien memahami proses perizinan lingkungan.
+- Mendukung proses internal perusahaan terkait manajemen konten dan dokumentasi.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## **Teknologi yang Digunakan**
 
-## Expanding the ESLint configuration
+- **React.js (Vite)** — Frontend utama.
+- **JavaScript (ES6+)**
+- **CSS** — Styling tambahan.
+- **Zustand** — State management ringan.
+- **Framer Motion** — Animasi UI.
+- **React Router** — Routing halaman.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## **Persyaratan Sistem**
+
+Pastikan environment development sudah terpasang:
+
+- **Node.js v18+**
+- **npm atau pnpm**
+
+---
+
+## **Cara Menjalankan Project (Development)**
+
+```bash
+npm install
+npm run dev
+```
+
+---
+
+## **Build untuk Produksi**
+
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+## **Struktur Direktori (Singkat)**
+
+```
+public/     -> Asset statis (gambar, video, musik)
+src/        -> Seluruh kode frontend
+components/ -> Komponen UI
+pages/      -> Halaman utama website
+lib/        -> Data, helper, konfigurasi
+styles/     -> File CSS
+utils/      -> Utility functions
+```
+
+---
+
+## **Deployment**
+
+Project dapat di-deploy ke:
+
+- Netlify
+- Vercel
+- Cloudflare Pages
+
+Output build berada di folder:
+
+```
+dist/
+```
+
+---
+
+## **Kontak Perusahaan**
+
+**PT. Geo Mandiri Kreasi**
+Layanan Jasa Perizinan Lingkungan<br>
+Email: _info@geomandiri.co.id_<br>
+Website: _https://www.geomandiri.co.id_
