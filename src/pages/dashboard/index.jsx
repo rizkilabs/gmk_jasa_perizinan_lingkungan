@@ -6,6 +6,8 @@ import PermitList from "./PermitList";
 import ChatbotLogs from "./ChatbotLogs";
 import PrivateRoute from "../../components/PrivateRoute";
 import DashboardOverview from "./DashboardOverview";
+import EditContent from "./EditContent"; // new
+import AdminRoute from "../../components/AdminRoute"; // new
 
 export default function DashboardRoutes() {
   return (
@@ -23,6 +25,16 @@ export default function DashboardRoutes() {
 
         <Route path="permit" element={<PermitList />} />
         <Route path="chatbot" element={<ChatbotLogs />} />
+
+        {/* NEW: edit content page (admin only) */}
+        <Route
+          path="edit-content"
+          element={
+            <AdminRoute>
+              <EditContent />
+            </AdminRoute>
+          }
+        />
 
         {/* fallback */}
         <Route path="*" element={<Navigate to="/dashboard" replace />} />

@@ -1,23 +1,20 @@
 // src/pages/dashboard/Sidebar.jsx
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Home, List, MessageSquare, PlusSquare, LogOut } from "lucide-react";
-import { useStore } from "../../hooks/useStore";
+import { Home, List, FileEdit, LogOut } from "lucide-react";
+import useStore from "../../hooks/useStore";
 
 export default function Sidebar({ collapsed, setCollapsed }) {
   const logout = useStore((s) => s.logout);
+  const user = useStore((s) => s.user); // get user with role
   const navigate = useNavigate();
 
+  const role = user?.role || "user"; // fallback user
+
   const handleLogout = () => {
-    // clear Zustand user
     logout();
-
-    // clear backup localStorage user
     localStorage.removeItem("loggedInUser");
-
-    // Redirect to login
     navigate("/login", { replace: true });
-    // replace: true → user nggak bisa back ke dashboard
   };
 
   return (
@@ -71,7 +68,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
             </NavLink>
           </li>
 
-          {/* Permintaan Izin */}
+          {/* Permintaan Izin - visible for all */}
           <li className="nav-item">
             <NavLink
               className={({ isActive }) =>
@@ -86,35 +83,22 @@ export default function Sidebar({ collapsed, setCollapsed }) {
             </NavLink>
           </li>
 
-          {/* Chatbot */}
-          <li className="nav-item">
-            <NavLink
-              className={({ isActive }) =>
-                `nav-link d-flex align-items-center gap-2 py-2 px-2 rounded ${
-                  isActive ? "fw-semibold" : ""
-                }`
-              }
-              to="/dashboard/chatbot"
-            >
-              <MessageSquare size={18} />
-              {!collapsed && <span>Chatbot Logs</span>}
-            </NavLink>
-          </li>
-
-          {/* Tambah Izin */}
-          <li className="nav-item mt-3">
-            <NavLink
-              className={({ isActive }) =>
-                `nav-link d-flex align-items-center gap-2 py-2 px-2 rounded ${
-                  isActive ? "fw-semibold" : ""
-                }`
-              }
-              to="/dashboard/permit?mode=add"
-            >
-              <PlusSquare size={18} />
-              {!collapsed && <span>Tambah Izin</span>}
-            </NavLink>
-          </li>
+          {/* Edit Content (ADMIN ONLY) */}
+          {role === "admin" && (
+            <li className="nav-item mt-3">
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link d-flex align-items-center gap-2 py-2 px-2 rounded ${
+                    isActive ? "fw-semibold" : ""
+                  }`
+                }
+                to="/dashboard/edit-content"
+              >
+                <FileEdit size={18} />
+                {!collapsed && <span>Edit Content</span>}
+              </NavLink>
+            </li>
+          )}
         </ul>
       </nav>
 

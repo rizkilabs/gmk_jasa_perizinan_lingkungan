@@ -14,6 +14,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Portfolio from "./pages/Portfolio";
 import Dokumentasi from "./pages/Dokumentasi";
+import EditContent from "./pages/dashboard/EditContent"; // ADD THIS
 
 function App() {
   const theme = useStore((s) => s.theme);
@@ -51,6 +52,7 @@ function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/dokumentasi" element={<Dokumentasi />} />
           <Route path="/dashboard/*" element={<DashboardRoutes />} />
+          <Route path="edit-content" element={<EditContent />} />
         </Routes>
       </Router>
     </>

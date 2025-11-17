@@ -1,9 +1,20 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Typewriter from "typewriter-effect"; // typing effect
+import Typewriter from "typewriter-effect";
 import MotionWrapper from "../../components/MotionWrapper";
 
 const HeroSection = () => {
+  // load hero content from localStorage
+  const savedHero = JSON.parse(localStorage.getItem("heroContent") || "{}");
+
+  // fallback default content
+  const titleText =
+    savedHero.title || "Solusi untuk Lingkungan yang Lebih Baik 🌿";
+
+  const subtitleText =
+    savedHero.subtitle ||
+    "Kami bantu perusahaan wujudkan kepatuhan lingkungan dengan mudah dan cepat.";
+
   return (
     <section
       className="position-relative d-flex align-items-center justify-content-center text-center text-white overflow-hidden"
@@ -13,6 +24,7 @@ const HeroSection = () => {
         paddingTop: "80px",
       }}
     >
+      {/* Background video */}
       <motion.div
         className="position-absolute top-0 start-0 w-100 h-100"
         initial={{ opacity: 0 }}
@@ -65,6 +77,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
         >
+          {/* TITLE */}
           <motion.h1
             className="fw-bold mb-3"
             style={{
@@ -77,16 +90,17 @@ const HeroSection = () => {
           >
             <Typewriter
               options={{
-                strings: ["Solusi untuk Lingkungan yang Lebih Baik 🌿"],
+                strings: [titleText], // dynamic text
                 autoStart: true,
                 loop: true,
                 deleteSpeed: 60,
                 delay: 50,
-                pauseFor: 1200, // pause biar terlihat natural
+                pauseFor: 1200,
               }}
             />
           </motion.h1>
 
+          {/* SUBTITLE */}
           <motion.p
             className="lead mb-4"
             style={{
@@ -97,10 +111,10 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2 }}
           >
-            Kami bantu perusahaan wujudkan kepatuhan lingkungan dengan mudah dan
-            cepat.
+            {subtitleText}
           </motion.p>
 
+          {/* CTA BUTTON */}
           <motion.a
             href="#layanan"
             className="btn btn-toska px-4 py-2"

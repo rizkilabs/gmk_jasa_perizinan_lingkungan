@@ -123,6 +123,7 @@
 |   |       |-- ServiceProcess.jsx
 |   |       `-- ServiceSidebar.jsx
 |   |-- hooks/
+|   |   |-- useIsMobile.js
 |   |   |-- usePriceEstimator.js
 |   |   |-- useScrollToTop.js
 |   |   |-- useStore.js
@@ -160,6 +161,7 @@
 |   |       |-- ChatbotLogs.jsx
 |   |       |-- DashboardLayout.jsx
 |   |       |-- DashboardOverview.jsx
+|   |       |-- PermitCardItem.jsx
 |   |       |-- PermitFormModal.jsx
 |   |       |-- PermitList.jsx
 |   |       |-- Sidebar.jsx
@@ -176,4 +178,4 @@
 |-- struktur.txt
 `-- vite.config.js
 
-24 directories, 152 files
+24 directories, 154 files
