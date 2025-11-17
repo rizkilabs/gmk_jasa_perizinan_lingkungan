@@ -96,7 +96,6 @@ export default function ServiceDetailPage() {
         onClose={() => setOpenEstimator(false)}
         service={service}
       />
-      <ChatbotWidget />
     </Layout>
   );
 }

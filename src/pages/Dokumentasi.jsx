@@ -4,6 +4,7 @@ import MediaModal from "../components/MediaModal";
 import videoBg from "../assets/dokumentasi/doc-video.mp4";
 import "../styles/dokumentasi.css";
 import Navbar from "../components/Navbar";
+import ChatbotWidget from "./LandingPage/ChatbotWidget";
 
 const Dokumentasi = () => {
   const [selectedMedia, setSelectedMedia] = useState(null);
@@ -64,6 +65,7 @@ const Dokumentasi = () => {
           />
         </div>
       </div>
+      <ChatbotWidget />
     </>
   );
 };

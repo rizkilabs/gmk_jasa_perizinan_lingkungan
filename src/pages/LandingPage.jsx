@@ -12,7 +12,6 @@ import {
 function LandingPage() {
   return (
     <>
-      {" "}
       <Layout>
         <MotionWrapper>
           <HeroSection />
@@ -21,7 +20,6 @@ function LandingPage() {
           <TestimonialCarousel />
         </MotionWrapper>
       </Layout>
-      
     </>
   );
 }

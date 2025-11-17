@@ -106,7 +106,6 @@ function ServiceList() {
           </div>
         </div>
       </section>
-      <ChatbotWidget />
     </Layout>
   );
 }

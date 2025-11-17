@@ -145,7 +145,7 @@ body.dark-mode .gallery-toggle-btn {
   opacity: 0;
   transform: translateY(12px);
   animation: fadeUp 0.45s ease forwards;
-  animation-delay: calc(var(--i) * 0.25s);
+  animation-delay: calc(var(--i) * 0.4s);
 }
 
 @keyframes fadeUp {

@@ -24,7 +24,8 @@
 |   |   |-- tiktok_3.jpg
 |   |   |-- tiktok_4.jpg
 |   |   |-- tiktok_5.jpg
-|   |   `-- youtube_1.jpg
+|   |   |-- youtube_1.jpg
+|   |   `-- youtube_2.jpg
 |   |-- geomandiri-com.jpg
 |   |-- music/
 |   |   `-- background.mp3
@@ -128,6 +129,7 @@
 |   |       `-- ServiceSidebar.jsx
 |   |-- hooks/
 |   |   |-- useIsMobile.js
+|   |   |-- useMusicStore.js
 |   |   |-- usePriceEstimator.js
 |   |   |-- useScrollToTop.js
 |   |   |-- useStore.js
@@ -139,6 +141,7 @@
 |   |   |-- data.js
 |   |   |-- dokumentasiData.js
 |   |   |-- embedParser.js
+|   |   |-- getYoutubeId.js
 |   |   |-- iconMap.js
 |   |   |-- portfolioData.js
 |   |   `-- priceRules.js
@@ -175,12 +178,15 @@
 |   |-- styles/
 |   |   |-- TestimonialCarousel.css
 |   |   |-- animations.css
+|   |   |-- chatbot.css
 |   |   |-- dark.css
 |   |   |-- dokumentasi.css
 |   |   `-- global.css
 |   `-- utils/
-|       `-- getTiktokEmbedUrl.js
+|       |-- getTiktokEmbedUrl.js
+|       |-- getYoutubeId.js
+|       `-- parseYoutubeUrl.js
 |-- struktur.txt
 `-- vite.config.js
 
-25 directories, 158 files
+25 directories, 164 files

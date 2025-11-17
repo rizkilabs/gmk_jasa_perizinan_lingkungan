@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Footer() {
   return (
@@ -20,18 +21,18 @@ function Footer() {
             <h6 className="text-uppercase mb-3 fw-semibold">Layanan Kami</h6>
             <ul className="list-unstyled">
               <li>
-                <a href="layanan/amdal">Penyusunan AMDAL</a>
+                <NavLink to="/layanan/amdal">Penyusunan AMDAL</NavLink>
               </li>
               <li>
-                <a href="layanan/ukl-upl-sppl">UKL-UPL</a>
+                <NavLink to="/layanan/ukl-upl-sppl">UKL-UPL</NavLink>
               </li>
               <li>
-                <a href="layanan/ukl-upl-sppl">SPPL</a>
+                <NavLink to="/layanan/ukl-upl-sppl">SPPL</NavLink>
               </li>
               <li>
-                <a href="layanan/konsultasi-operasional">
+                <NavLink to="/layanan/konsultasi-operasional">
                   Konsultasi Lingkungan
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>

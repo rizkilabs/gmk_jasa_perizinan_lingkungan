@@ -218,8 +218,6 @@ function About() {
           </section>
         </div>
       </MotionWrapper>
-
-      <ChatbotWidget />
     </Layout>
   );
 }

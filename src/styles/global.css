@@ -1092,6 +1092,12 @@ body.dark-mode .media-caption {
   background: #000;
 }
 
+@media (max-width: 576px) {
+  .iframe-ratio {
+    margin-bottom: 15vh;
+  }
+}
+
 /* ensure iframe fills wrapper */
 .iframe-ratio iframe,
 .iframe-ratio video,
@@ -1107,6 +1113,12 @@ body.dark-mode .media-caption {
   max-height: calc(70vh - 56px);
   object-fit: contain;
   border-radius: 10px;
+}
+
+@media (max-width: 576px) {
+  .modal-media-img {
+    margin-bottom: 17vh;
+  }
 }
 
 /* Desktop: center modal, card style */

@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import MotionWrapper from "../components/MotionWrapper";
 import MediaModal from "../components/MediaModal";
 import { motion, AnimatePresence } from "framer-motion";
+import ChatbotWidget from "./LandingPage/ChatbotWidget";
 
 import {
   tiktokVideos,
@@ -267,6 +268,7 @@ const Portfolio = () => {
           type={modal.type}
           src={modal.src}
         />
+        <ChatbotWidget />
       </MotionWrapper>
     </>
   );

@@ -280,8 +280,6 @@ export default function Contact() {
           </div>
         </div>
       </MotionWrapper>
-
-      <ChatbotWidget />
     </Layout>
   );
 }
