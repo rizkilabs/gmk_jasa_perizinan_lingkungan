@@ -7,16 +7,19 @@ const services = [
     icon: <Leaf />,
     title: "Analisis Dampak Lingkungan",
     desc: "Konsultasi AMDAL dengan ahli bersertifikat dan metode sesuai regulasi terbaru.",
+    slug: "amdal",
   },
   {
     icon: <Building2 />,
     title: "Perizinan Usaha",
     desc: "Pendampingan perizinan lingkungan yang cepat, efisien, dan terintegrasi.",
+    slug: "perizinan-nib",
   },
   {
     icon: <FileCheck2 />,
     title: "Monitoring & Pelaporan",
     desc: "Sistem pemantauan dan pelaporan kepatuhan lingkungan secara real-time.",
+    slug: "konsultasi-operasional",
   },
 ];
 

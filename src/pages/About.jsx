@@ -76,7 +76,7 @@ function ClientLogoCarousel() {
             style={{
               width: 140,
               filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.15))",
-              transition: "transform 0.3s",
+              transition: "transform 0.9s",
             }}
             onMouseOver={(e) =>
               (e.currentTarget.style.transform = "scale(1.1)")

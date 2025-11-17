@@ -447,6 +447,13 @@ body.dark-mode .footer-bottom {
   box-shadow: 0 0 10px rgba(0, 191, 166, 0.4);
 }
 
+@media (max-width: 480px) {
+  .chatbot-widget {
+    width: 90% !important;
+    right: 5% !important;
+  }
+}
+
 .user-avatar {
   background: #0d6efd; /* Bootstrap primary */
   box-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
@@ -1230,3 +1237,251 @@ body.dark-mode .media-caption {
   outline: 2px solid rgba(255, 255, 255, 0.12);
   outline-offset: 2px;
 }
+
+/* fluid base font but keep readable */
+html {
+  font-size: 16px;
+}
+
+/* scale body fonts fluidly but keep fallback for old browsers */
+body {
+  font-size: clamp(14px, 1.25vw, 16px);
+  line-height: 1.5;
+}
+
+/* images & media safe defaults */
+img,
+picture,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* reduce heavy animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* NAVBAR: make clickable area larger on mobile, reduce padding on small screens */
+.navbar {
+  padding: 0.6rem 1rem;
+}
+@media (max-width: 991px) {
+  .navbar {
+    padding: 0.45rem 0.75rem;
+  }
+  .navbar .nav-link {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.95rem;
+  }
+  .navbar-toggler {
+    padding: 0.35rem 0.45rem;
+  }
+  .navbar-toggler-icon {
+    width: 22px;
+    height: 18px;
+    background-size: 22px 18px;
+  }
+}
+
+/* NAVBAR collapse dropdown full width on very small screens */
+@media (max-width: 575.98px) {
+  .navbar-collapse {
+    background: rgba(255, 255, 255, 0.95);
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    padding: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  body.dark-mode .navbar-collapse {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* SERVICE CARD: reduce padding on small screens */
+@media (max-width: 768px) {
+  .service-card {
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
+  }
+  .service-icon {
+    font-size: 2.1rem;
+  }
+  .service-title {
+    font-size: 1rem;
+  }
+}
+
+/* CTA: ensure buttons not too big on small devices */
+@media (max-width: 576px) {
+  .cta-button {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* GLASS MEDIA GRID: adapt min column size for small screens */
+@media (max-width: 1200px) {
+  .glass-media-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .glass-media-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+  }
+  .glass-media-item {
+    min-height: 130px;
+  }
+  .media-play {
+    width: 50px;
+    height: 50px;
+  }
+  .media-caption {
+    font-size: 0.9rem;
+  }
+}
+
+/* MEDIA MODAL: responsive heights using clamp */
+.iframe-ratio {
+  height: clamp(240px, 55vh, 720px);
+}
+@media (max-width: 576px) {
+  .media-modal-panel {
+    padding: 10px;
+    border-radius: 12px 12px 0 0;
+  }
+  .media-modal-backdrop {
+    align-items: end;
+  }
+  .media-modal-panel .close-btn {
+    font-size: 28px;
+  }
+}
+
+/* TEAM PHOTOS: scale down smoothly on smaller devices */
+@media (max-width: 992px) {
+  .team-photo-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+}
+@media (max-width: 576px) {
+  .team-photo-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+  .team-name {
+    font-size: 0.95rem;
+  }
+  .team-role {
+    font-size: 0.8rem;
+  }
+}
+
+/* PORTFOLIO TAB: two-column layout on narrow viewports */
+@media (max-width: 520px) {
+  .portfolio-tabs {
+    gap: 8px;
+  }
+  .portfolio-tab-card {
+    flex: 1 1 48%;
+    min-width: 48%;
+    padding: 8px 10px;
+    font-size: 0.92rem;
+  }
+}
+
+/* FOOTER: stack columns and tighten spacing */
+@media (max-width: 991px) {
+  .footer-section {
+    padding: 40px 18px;
+  }
+  .footer-section h5,
+  .footer-section h6 {
+    font-size: 0.95rem;
+  }
+  .footer-section p,
+  .footer-section li,
+  .footer-section a {
+    font-size: 0.92rem;
+  }
+}
+
+/* LOGIN CARD: adjust size on very small screens */
+@media (max-width: 420px) {
+  .login-glass-card {
+    padding: 1.5rem;
+    border-radius: 14px;
+  }
+  .btn-login {
+    padding: 8px 16px;
+  }
+}
+
+/* MUSIC TOGGLE: reduce size and adjust spacing for small screens */
+@media (max-width: 576px) {
+  .music-toggle {
+    width: 58px;
+    height: 58px;
+    font-size: 22px;
+    left: 12px;
+    bottom: 12px;
+    box-shadow: 0 0 12px rgba(0, 246, 255, 0.18),
+      0 4px 12px rgba(0, 160, 255, 0.12);
+  }
+  .music-toggle .music-icon {
+    font-size: 20px;
+  }
+}
+
+/* TABLES: make horizontal scroll on small screens to avoid overflow */
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* NAV: increase hit area for dropdown items on touch */
+@media (hover: none) {
+  .dropdown-menu .dropdown-item {
+    padding: 12px 10px;
+  }
+}
+
+/* small helper classes for spacing adjustments on tiny devices */
+@media (max-width: 420px) {
+  .p-xs {
+    padding: 6px !important;
+  }
+  .m-xs {
+    margin: 6px !important;
+  }
+}
+
+/* ensure modal/backdrop z-index compatibility */
+@media (max-width: 1200px) {
+  .media-modal-backdrop {
+    z-index: 99999;
+  }
+}
+
+/* keep big interactive elements accessible */
+button,
+.btn,
+.nav-link,
+.dropdown-item {
+  touch-action: manipulation;
+}
+
+/* end responsive enhancements */

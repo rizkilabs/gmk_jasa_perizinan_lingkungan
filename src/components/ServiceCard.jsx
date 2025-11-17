@@ -21,7 +21,7 @@ function ServiceCard({ icon, title, shortDesc, slug, category }) {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
-      whileHover={{ y: -8, rotate: [0, 1.5] }}
+      // whileHover={{ y: -8, rotate: [0, 1.5] }}
       whileTap={{ scale: 0.98 }}
       transition={{ type: "spring", stiffness: 200, damping: 14 }}
       className="service-card"

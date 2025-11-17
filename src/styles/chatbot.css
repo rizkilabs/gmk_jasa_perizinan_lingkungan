@@ -1,0 +1,50 @@
+/* src/styles/chatbot.css */
+
+/* Base widget */
+.chatbot-widget {
+  width: 360px;
+  height: 500px;
+  bottom: 6rem;
+  right: 1.5rem;
+  position: fixed;
+  overflow: hidden;
+  border-radius: 20px;
+  z-index: 1000;
+  transition: height 0.3s ease, width 0.3s ease;
+}
+
+/* Minimized state */
+.chatbot-minimized {
+  height: 60px !important;
+}
+
+/* Floating button size responsive */
+.chatbot-float-btn {
+  width: 58px;
+  height: 58px;
+}
+
+@media (max-width: 480px) {
+  .chatbot-widget {
+    width: 100vw;
+    height: 85vh;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+  }
+
+  .chatbot-float-btn {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .chatbot-widget {
+    width: 80vw;
+    height: 70vh;
+    right: 1rem;
+    bottom: 5rem;
+  }
+}

@@ -11,15 +11,18 @@ import {
 
 function LandingPage() {
   return (
-    <Layout>
-      <MotionWrapper>
-        <HeroSection />
-        <ServicePreview />
-        <CTASection />
-        <TestimonialCarousel />
-        <ChatbotWidget />
-      </MotionWrapper>
-    </Layout>
+    <>
+      {" "}
+      <Layout>
+        <MotionWrapper>
+          <HeroSection />
+          <ServicePreview />
+          <CTASection />
+          <TestimonialCarousel />
+        </MotionWrapper>
+      </Layout>
+      
+    </>
   );
 }
 

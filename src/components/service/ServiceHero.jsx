@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { getReactIcon } from "../../lib/iconMap";
+import { Link } from "react-router-dom";
 
 const WHATSAPP_NUMBER = "6281315816277"; // replace with your WA number
 
@@ -72,28 +73,32 @@ export default function ServiceHero({ service, navigate }) {
           {service.detail?.cta?.whatsapp || "Hubungi Kami"}
         </a>
 
-        <button
+        <a
+          href="https://drive.google.com/drive/folders/16zMbUZwZjQCjWHdgIixPQUU1Py9VTMnr"
+          target="_blank"
+          rel="noreferrer"
           className="btn btn-light btn-outline-dark"
           onClick={() => {
             window.scrollTo({
-              top: document.body.scrollHeight,
+              // top: document.body.scrollHeight,
               behavior: "smooth",
             });
           }}
         >
           {service.detail?.cta?.konsultasi || "Konsultasi Gratis"}
-        </button>
+        </a>
 
-        <button
-          className="btn btn-light"
-          onClick={() =>
-            navigate("/apply", {
-              state: { serviceSlug: service.slug, serviceId: service.id },
-            })
-          }
+        <Link
+          to="/dashboard"
+          className="btn btn-light btn-outline-dark"
+          // onClick={() =>
+          //   navigate("/login", {
+          //     state: { serviceSlug: service.slug, serviceId: service.id },
+          //   })
+          // }
         >
           {service.detail?.cta?.form || "Ajukan Layanan"}
-        </button>
+        </Link>
       </div>
     </>
   );

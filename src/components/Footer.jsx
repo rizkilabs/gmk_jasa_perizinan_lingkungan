@@ -20,16 +20,18 @@ function Footer() {
             <h6 className="text-uppercase mb-3 fw-semibold">Layanan Kami</h6>
             <ul className="list-unstyled">
               <li>
-                <a href="#amdal">Penyusunan AMDAL</a>
+                <a href="layanan/amdal">Penyusunan AMDAL</a>
               </li>
               <li>
-                <a href="#ukl-upl">UKL-UPL</a>
+                <a href="layanan/ukl-upl-sppl">UKL-UPL</a>
               </li>
               <li>
-                <a href="#sppl">SPPL</a>
+                <a href="layanan/ukl-upl-sppl">SPPL</a>
               </li>
               <li>
-                <a href="#konsultasi">Konsultasi Lingkungan</a>
+                <a href="layanan/konsultasi-operasional">
+                  Konsultasi Lingkungan
+                </a>
               </li>
             </ul>
           </div>
@@ -50,14 +52,28 @@ function Footer() {
             </p>
 
             <div className="mt-3 social-icons">
-              <a href="#" className="me-3">
-                <i className="bi bi-facebook fs-5"></i>
+              <a
+                href="https://www.youtube.com/@visgenGeoMandiri"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="me-3"
+              >
+                <i className="bi bi-youtube fs-5"></i>
               </a>
-              <a href="#" className="me-3">
+              <a
+                href="https://www.instagram.com/visgen2025"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="me-3"
+              >
                 <i className="bi bi-instagram fs-5"></i>
               </a>
-              <a href="#">
-                <i className="bi bi-linkedin fs-5"></i>
+              <a
+                href="https://www.tiktok.com/@visgen5"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="bi bi-tiktok fs-5"></i>
               </a>
             </div>
           </div>

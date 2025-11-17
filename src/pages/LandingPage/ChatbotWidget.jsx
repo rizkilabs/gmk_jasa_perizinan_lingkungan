@@ -90,7 +90,7 @@ const ChatbotWidget = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.3 }}
-            className="card shadow-lg border-0 rounded-4 position-fixed"
+            className="card chatbot-widget shadow-lg border-0 rounded-4 position-fixed"
             style={{
               width: "360px",
               height: minimized ? "60px" : "500px",

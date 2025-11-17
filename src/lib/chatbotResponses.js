@@ -68,13 +68,13 @@ Tapi bisa lebih cepat tergantung kelengkapan data dari kamu.`,
     keywords: ["konsultasi", "butuh bantuan", "mau tanya", "bisa bantu"],
     response: `🤝 Tentu! Kamu bisa konsultasi gratis dulu.  
 Ceritakan jenis usaha kamu, nanti GeoBot bantu arahkan dokumen yang kamu butuh.  
-Kalau mau cepat, hubungi tim kami langsung di WhatsApp 0812-3456-7890.`,
+Kalau mau cepat, hubungi tim kami langsung di WhatsApp 0813-1581-6277.`,
   },
   {
     keywords: ["kontak", "hubungi", "telepon", "alamat", "lokasi", "maps"],
     response: `📍 *Kontak PT. Geo Mandiri Kreasi*  
 🏢 Alamat: Jl. Raya Setu No. 88, Bekasi  
-📞 Telepon/WA: 0812-3456-7890  
+📞 Telepon/WA: 0813-1581-6277
 📧 Email: info@geomandirikreasi.co.id  
 🌐 Website: www.geomandirikreasi.co.id`,
   },

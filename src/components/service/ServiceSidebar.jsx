@@ -77,7 +77,7 @@ export default function ServiceSidebar({ service, onOpenEstimator }) {
           </a>
 
           <Link
-            to="/apply"
+            to="/dashboard"
             state={{ serviceSlug: service.slug }}
             className="btn btn-light"
             style={{ whiteSpace: "nowrap" }}
